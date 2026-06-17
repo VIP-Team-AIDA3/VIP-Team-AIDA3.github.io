@@ -1,8 +1,15 @@
 format: jb-book
 root: index
-chapters:
-  - file: mini-tutorials/index
-    sections:
-      - file: mini-tutorials/lecture01
-  - file: sub-teams/index
-  - file: resources/index
+parts:
+  - caption: Mini-Tutorials
+    chapters:
+      - file: mini-tutorials/index
+        sections:
+          - file: mini-tutorials/lecture01
+  - caption: Sub-Teams
+    chapters:
+      - file: sub-teams/sub-team-1/index
+      - file: sub-teams/sub-team-2/index
+  - caption: Resources
+    chapters:
+      - file: resources/index
