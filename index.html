@@ -1,4 +1,144 @@
-VIP Team AIDA3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Team AIDA3</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth scrolling for in-page anchors */
+        html { scroll-behavior: smooth; }
+        /* Custom scrollbar adjustments to match modern doc styles */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased h-screen flex flex-col overflow-hidden">
 
+    <header class="h-14 border-b border-slate-200 bg-white flex items-center justify-between px-4 z-10 shrink-0">
+        <div class="flex items-center space-x-3">
+            <button class="md:hidden text-slate-500 hover:text-slate-800 text-xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a href="#" class="font-semibold text-slate-900 hover:text-blue-600 transition-colors">
+                VIP Team AIDA3 Documentation
+            </a>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+            <div class="relative hidden sm:block w-48 md:w-64">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-sm"></i>
+                <input type="text" placeholder="Search docs... (Ctrl+K)" class="w-full pl-9 pr-3 py-1.5 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-500 transition-all">
+            </div>
+            <button class="text-slate-500 hover:text-slate-800 transition-colors" title="Toggle theme">
+                <i class="fa-regular fa-moon text-lg"></i>
+            </button>
+            <a href="https://github.com/VIP-Team-AIDA3" target="_blank" class="text-slate-500 hover:text-slate-800 transition-colors" title="Source repository">
+                <i class="fa-brands fa-github text-xl"></i>
+            </a>
+        </div>
+    </header>
 
-    Welcome to VIP Team AIDA3
+    <div class="flex flex-1 overflow-hidden">
+
+        <aside class="w-64 border-r border-slate-200 bg-slate-50 overflow-y-auto hidden md:block shrink-0 p-4 text-[14px]">
+            <div class="mb-6">
+                <a href="#" class="font-bold text-slate-900 block mb-2">Home / Preface</a>
+            </div>
+            
+            <div class="mb-4">
+                <span class="font-semibold text-slate-400 text-xs uppercase tracking-wider block mb-2">Introduction</span>
+                <ul class="space-y-1 pl-1">
+                    <li>
+                        <a href="#" class="text-blue-600 font-medium block py-1 border-l-2 border-blue-600 pl-3">
+                            Lecture 1 - The Basics
+                        </a>
+                        <ul class="pl-4 mt-1 space-y-1 text-slate-500 text-[13px] border-l border-slate-200">
+                            <li><a href="#section-1" class="hover:text-slate-900 block py-0.5">1. Machine Learning</a></li>
+                            <li><a href="#section-2" class="hover:text-slate-900 block py-0.5">2. Causality</a></li>
+                            <li><a href="#section-3" class="hover:text-slate-900 block py-0.5">3. Predictive Modeling</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="text-slate-600 hover:text-slate-900 block py-1 pl-3 transition-colors">Lecture 2 - Core Concepts</a></li>
+                    <li><a href="#" class="text-slate-600 hover:text-slate-900 block py-1 pl-3 transition-colors">Lecture 3 - Advanced Setup</a></li>
+                </ul>
+            </div>
+
+            <div class="mb-4">
+                <span class="font-semibold text-slate-400 text-xs uppercase tracking-wider block mb-2">Deep Dive Modules</span>
+                <ul class="space-y-1 pl-1">
+                    <li><a href="#" class="text-slate-600 hover:text-slate-900 block py-1 pl-3 transition-colors">Data Processing</a></li>
+                    <li><a href="#" class="text-slate-600 hover:text-slate-900 block py-1 pl-3 transition-colors">Model Evaluation</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto bg-white px-6 py-8 md:px-12 flex justify-center">
+            <div class="max-w-3xl w-full flex flex-col justify-between">
+                
+                <article class="prose prose-slate max-w-none">
+                    <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight border-b border-slate-200 pb-3 mb-6">
+                        Lecture 1 - The Basics
+                    </h1>
+                    
+                    <section id="section-1" class="scroll-mt-6 mb-8">
+                        <h2 class="text-xl font-bold text-slate-800 mb-3 flex items-center group">
+                            1. Machine Learning
+                            <a href="#section-1" class="ml-2 text-slate-300 group-hover:text-slate-500 text-sm transition-colors">#</a>
+                        </h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            This is your primary text area. It mimics the clean, spaced layout of the source site. You can insert text paragraphs, equations, or structural details here.
+                        </p>
+                    </section>
+
+                    <section id="section-2" class="scroll-mt-6 mb-8">
+                        <h2 class="text-xl font-bold text-slate-800 mb-3 flex items-center group">
+                            2. Causality
+                            <a href="#section-2" class="ml-2 text-slate-300 group-hover:text-slate-500 text-sm transition-colors">#</a>
+                        </h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            A structural interface focuses heavily on readability. Elements should have strong padding distributions to make scanning documentation comfortable.
+                        </p>
+                    </section>
+
+                    <section id="section-3" class="scroll-mt-6 mb-8">
+                        <h2 class="text-xl font-bold text-slate-800 mb-3 flex items-center group">
+                            3. Predictive Modeling
+                            <a href="#section-3" class="ml-2 text-slate-300 group-hover:text-slate-500 text-sm transition-colors">#</a>
+                        </h2>
+                        <p class="text-slate-600 leading-relaxed mb-4">
+                            You can add tables, images, or code boxes inside this middle division freely.
+                        </p>
+                    </section>
+                </article>
+
+                <div class="mt-12 pt-6 border-t border-slate-200 flex justify-between items-center text-sm shrink-0">
+                    <a href="#" class="border border-slate-200 hover:border-slate-300 rounded-xl p-4 w-[48%] flex flex-col items-start transition-all hover:bg-slate-50 group">
+                        <span class="text-xs text-slate-400 font-medium mb-1">← Previous</span>
+                        <span class="font-semibold text-blue-600 group-hover:text-blue-700">Welcome Page</span>
+                    </a>
+                    <a href="#" class="border border-slate-200 hover:border-slate-300 rounded-xl p-4 w-[48%] flex flex-col items-end text-right transition-all hover:bg-slate-50 group">
+                        <span class="text-xs text-slate-400 font-medium mb-1">Next →</span>
+                        <span class="font-semibold text-blue-600 group-hover:text-blue-700">Core Architecture</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <aside class="w-64 border-l border-slate-200 bg-white overflow-y-auto hidden lg:block shrink-0 p-4 text-[13px]">
+            <span class="font-bold text-slate-900 tracking-wide uppercase text-[11px] block mb-3 text-slate-400">
+                On this page
+            </span>
+            <ul class="space-y-2.5 text-slate-500 border-l border-slate-100 pl-3">
+                <li><a href="#section-1" class="hover:text-slate-900 font-medium transition-colors block">1. Machine Learning</a></li>
+                <li><a href="#section-2" class="hover:text-slate-900 transition-colors block">2. Causality</a></li>
+                <li><a href="#section-3" class="hover:text-slate-900 transition-colors block">3. Predictive Modeling</a></li>
+            </ul>
+        </aside>
+
+    </div>
+</body>
+</html>
