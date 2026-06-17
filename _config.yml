@@ -1,0 +1,14 @@
+title: VIP Team AIDA3
+author: Your Team Name
+logo: "" # You can add a path to an image later if you want
+
+# Theme settings to match the PyData look
+html:
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
+
+repository:
+  url: https://github.com/VIP-Team-AIDA3/VIP-Team-AIDA3.github.io
+  path_to_book: ""
+  branch: main
