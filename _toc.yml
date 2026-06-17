@@ -2,6 +2,3 @@ format: jb-book
 root: index
 chapters:
   - file: lecture01
-    sections:
-      # If you make sub-pages later, you list them under here:
-      # - file: lecture01/sub-reading
