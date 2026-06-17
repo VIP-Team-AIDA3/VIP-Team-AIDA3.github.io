@@ -1,6 +1,6 @@
 title: VIP Team AIDA3
 author: Your Team Name
-logo: "" # You can add a path to an image later if you want
+logo: _static/flyer-graphic2.jpg
 
 # Theme settings to match the PyData look
 html:

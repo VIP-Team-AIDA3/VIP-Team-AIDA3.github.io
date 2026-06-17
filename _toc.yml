@@ -1,4 +1,8 @@
 format: jb-book
 root: index
 chapters:
-  - file: lecture01
+  - file: mini-tutorials/index
+    sections:
+      - file: mini-tutorials/lecture01
+  - file: sub-teams/index
+  - file: resources/index

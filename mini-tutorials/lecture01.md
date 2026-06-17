@@ -1,4 +1,4 @@
-# Lecture 1 - The Basics
+# Mini-Tutorial 1 - The Basics
 
 ## Machine Learning
 This is a standard markdown file. You can type normally, use bullet points, or insert code blocks.
