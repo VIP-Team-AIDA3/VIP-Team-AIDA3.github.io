@@ -6,10 +6,12 @@ parts:
       - file: mini-tutorials/index
         sections:
           - file: mini-tutorials/lecture01
-  - caption: Sub-Teams
+  - caption: Streams
     chapters:
-      - file: sub-teams/sub-team-1/index
-      - file: sub-teams/sub-team-2/index
+      - file: streams/RL for GNC/teams
+      - file: streams/SysID for UAVs/teams
+      - file: streams/FERDA/teams
+      - file: streams/LLMs for UAVs/teams
   - caption: Resources
     chapters:
       - file: resources/index
