@@ -1,0 +1,8 @@
+# Large Language Models for safe UAV operations
+This subteam supports research on conversational mission-planning and operations, jointly with PhD students and other researchers. It focuses specifically on the safety of language-based instructions and communications between operators, UAVs, and air-traffic-control. Formal methods such as propositional logic and signal temporal logic play an important role in this. In addition, formal grammars also support methods such as prompt-engineering and fine-tuning of LLMs. This team will focus its efforts on such formal methods and grammars in order to increase the safety of conversational path-planning. The mentors will introduce the team members to ATC communication, STL, and formal grammars. The goal is to build a ground-truth dataset as well as to implement human-subject experiments to evaluate an existing chatbot system, and also mine additional data to fuse ATC communication data with ADS-B and other geo-spatial information.
+
+
+Individual tasks 1) review of existing datasets 2) data mining and data fusion related to speech, text, ADS-B and other geospatial data 3) labeling of ATC communication datasets, 4) testing and evaluation of speech-to-text-to-speech communication, 5) user-interface design improvements, 6) publishing produced data as open data for other researchers 7) recruitment of pilots, ATC experts, and students into chatbot testing, and support of A-B testing and real-world testing. 
+
+
+All activities will be performed in alignment with our industry partners, and other stakeholders such as ATC operators, pilots, etc. 

@@ -1,0 +1,4 @@
+# Reinforcement Learning for Guidance, Navigation, and Control
+This subteam explores learning-based policies for path-planning for fixed-wing UAVs using a gymnasium environment. The research focus is Reinforcement Learning for guidance and control (policy learning, reward design, sim-to-real strategies) and how learned policies compare to classical baselines under disturbances and modeling error. 
+
+Expected activities include: 1) Literature review 2) Mathematical Problem Formulation 3) Coding a Gymnasium Environment for Dynamic path-planning (no-ROS) that is compatible with the Simulator used for the Fixed-wing drone competition 4) Integration of the RL path-planner with a PID control and State-Simulator 5) Training the RL model for  fixed-wing drone in the developed Gymnasium 6) Validating the Path-planner in the Simulator of the Competition, and 7) Deploying it on a real fixed-wing vehicle to be flown in PURT. 
