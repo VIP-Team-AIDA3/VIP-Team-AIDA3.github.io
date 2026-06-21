@@ -1,3 +1,3 @@
-# Stream 1 Teams
+# RL for GNC Teams
 
-Add team members for this stream here.
+Add team members for the RL for GNC stream here.

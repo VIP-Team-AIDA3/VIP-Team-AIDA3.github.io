@@ -1,3 +1,3 @@
-# Stream 4 Teams
+# LLMs for UAVs Teams
 
-Add team members for this stream here.
+Add team members for the LLMs for UAVs stream here.

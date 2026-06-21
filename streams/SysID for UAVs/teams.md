@@ -1,3 +1,3 @@
-# Stream 2 Teams
+# SysID for UAVs Teams
 
-Add team members for this stream here.
+Add team members for the SysID for UAVs stream here.

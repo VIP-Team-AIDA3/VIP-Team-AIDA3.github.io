@@ -1,3 +1,3 @@
-# Stream 3 Teams
+# FERDA Teams
 
-Add team members for this stream here.
+Add team members for the FERDA stream here.
