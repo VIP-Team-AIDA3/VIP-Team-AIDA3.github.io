@@ -14,9 +14,9 @@ parts:
       - file: streams/SysID for UAVs/description
         sections:
           - file: streams/SysID for UAVs/teams
-      - file: streams/FERDA/description
+      - file: streams/Classical GNC/description
         sections:
-          - file: streams/FERDA/teams
+          - file: streams/Classical GNC/teams
       - file: streams/LLMs for UAVs/description
         sections:
           - file: streams/LLMs for UAVs/teams
