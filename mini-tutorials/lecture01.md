@@ -6,16 +6,42 @@ In this tutorial, we will focus on discrete probability: settings where the outc
 
 ## Why We Need Probability
 
-Data almost always contains uncertainty. A model may be trained on a sample rather than an entire population. A sensor may be noisy. A medical test may be wrong. A user may click, churn, recover, fail, or respond in ways that are not deterministic.
+Autonomous UAVs operate with incomplete and noisy information. Cameras can misclassify objects, GPS measurements contain error, wind changes unpredictably, and a control action may not produce exactly the same motion on every flight. Probability gives us a consistent way to represent these uncertainties and make decisions despite them.
 
-Probability gives us tools for four recurring tasks:
+Probability appears throughout autonomy:
 
-- **Describe uncertainty:** How likely is rain tomorrow? How likely is a classifier's prediction to be correct?
-- **Compare risks:** Which treatment, policy, or design has the better chance of success?
-- **Learn from data:** How should our belief change after observing new evidence?
-- **Make decisions:** What action has the best expected payoff under uncertainty?
+- **Machine learning:** A perception model may estimate that an image contains a runway with probability $0.92$, rather than returning only a yes-or-no answer. These probabilities help the flight system decide whether the prediction is reliable enough to use.
+- **Optimization:** A path planner can balance flight time, energy use, and the probability of hazards. Instead of optimizing only the shortest route, it can minimize an expected cost that accounts for uncertain wind, obstacles, or sensor failures.
+- **Reinforcement learning (RL):** An RL agent learns which action has the greatest expected long-term reward. Both the next state and the reward may be uncertain because the vehicle dynamics, observations, and environment are not perfectly predictable.
 
-The main idea is to attach numbers to events so that those numbers behave consistently.
+### Example: Choosing a UAV Route
+
+Suppose a UAV must choose between two routes to a waypoint:
+
+| Route | Normal flight time | Probability of a strong-wind abort |
+| --- | ---: | ---: |
+| A: short route | 10 minutes | 0.20 |
+| B: sheltered route | 14 minutes | 0.05 |
+
+If an abort adds 30 minutes for returning, waiting, and trying again, a simple expected-time model is:
+
+$$
+E[\text{time}] = \text{normal flight time} + P(\text{abort})(30).
+$$
+
+For Route A:
+
+$$
+E[T_A] = 10 + (0.20)(30) = 16 \text{ minutes}.
+$$
+
+For Route B:
+
+$$
+E[T_B] = 14 + (0.05)(30) = 15.5 \text{ minutes}.
+$$
+
+Route A is shorter when everything goes well, but Route B has the lower expected time after accounting for wind risk. A real planner could extend this calculation to include battery consumption, collision risk, mission priority, and uncertainty in the weather forecast. This is why probability is central to machine learning, optimization, and reinforcement learning for UAVs: it turns uncertainty into quantities that an autonomous system can reason about.
 
 ## Events, Sample Spaces, and Venn Diagrams
 
@@ -59,7 +85,7 @@ because the fraction of heads should approach $0.5$ as the number of tosses beco
 
 This interpretation is useful for repeatable processes: coin flips, manufacturing defects, randomized experiments, survey sampling, A/B tests, and simulations. It is less straightforward for one-time events, such as "this exact bridge will fail this year" or "this candidate will win this election," because the event is not literally repeated under identical conditions.
 
-## Bertrand's Paradox: Why "Random" Must Be Precise
+<!-- ## Bertrand's Paradox: Why "Random" Must Be Precise
 
 Bertrand's paradox shows that probability questions can be ambiguous when the random experiment is not specified carefully. The classic question asks:
 
@@ -75,7 +101,63 @@ alt: Circle with an inscribed equilateral triangle and example chords.
 Bertrand's paradox is a warning: before calculating a probability, define the random experiment precisely.
 ```
 
-The lesson is not that probability is broken. The lesson is that a probability model must state what is random and how the random outcome is generated.
+The lesson is not that probability is broken. The lesson is that a probability model must state what is random and how the random outcome is generated. -->
+
+
+## Conditional Discrete Probability
+
+Conditional probability asks how probabilities change after we restrict attention to a condition.
+
+For events:
+
+$$
+P(A \mid B)=\frac{P(A \cap B)}{P(B)}
+\qquad \text{if } P(B)>0
+$$
+
+For discrete random variables:
+
+$$
+P(X=x \mid Y=y)=\frac{P(X=x, Y=y)}{P(Y=y)}
+\qquad \text{if } P(Y=y)>0
+$$
+
+Example: roll two fair dice. Let:
+
+- $X =$ value of the first die.
+- $S =$ sum of both dice.
+
+What is $P(X=4 \mid S=7)$?
+
+The outcomes with sum 7 are:
+
+$$
+(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)
+$$
+
+There are 6 equally likely outcomes under the condition $S=7$. Only one has $X=4$, namely $(4,3)$. Therefore:
+
+$$
+P(X=4 \mid S=7)=\frac16
+$$
+
+Now ask a different question: what is $P(X \geq 4 \mid S=7)$?
+
+The favorable outcomes are:
+
+$$
+(4,3),(5,2),(6,1)
+$$
+
+So:
+
+$$
+P(X \geq 4 \mid S=7)=\frac{3}{6}=\frac12
+$$
+
+Conditional probability is the foundation for Bayes' rule, Markov chains, many machine learning models, and statistical inference.
+
+
 
 ## Rules of Probability
 
@@ -335,59 +417,6 @@ For common distributions:
 | Binomial$(n,p)$ | $np$ | $np(1-p)$ |
 | Geometric$(p)$ | $1/p$ | $(1-p)/p^2$ |
 | Poisson$(\lambda)$ | $\lambda$ | $\lambda$ |
-
-## Conditional Discrete Probability
-
-Conditional probability asks how probabilities change after we restrict attention to a condition.
-
-For events:
-
-$$
-P(A \mid B)=\frac{P(A \cap B)}{P(B)}
-\qquad \text{if } P(B)>0
-$$
-
-For discrete random variables:
-
-$$
-P(X=x \mid Y=y)=\frac{P(X=x, Y=y)}{P(Y=y)}
-\qquad \text{if } P(Y=y)>0
-$$
-
-Example: roll two fair dice. Let:
-
-- $X =$ value of the first die.
-- $S =$ sum of both dice.
-
-What is $P(X=4 \mid S=7)$?
-
-The outcomes with sum 7 are:
-
-$$
-(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)
-$$
-
-There are 6 equally likely outcomes under the condition $S=7$. Only one has $X=4$, namely $(4,3)$. Therefore:
-
-$$
-P(X=4 \mid S=7)=\frac16
-$$
-
-Now ask a different question: what is $P(X \geq 4 \mid S=7)$?
-
-The favorable outcomes are:
-
-$$
-(4,3),(5,2),(6,1)
-$$
-
-So:
-
-$$
-P(X \geq 4 \mid S=7)=\frac{3}{6}=\frac12
-$$
-
-Conditional probability is the foundation for Bayes' rule, Markov chains, many machine learning models, and statistical inference.
 
 ## Summary
 
