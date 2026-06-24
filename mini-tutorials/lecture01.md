@@ -485,7 +485,7 @@ During a UAV flight, the probability that an obstacle is present in the planned 
 1. What is the probability that the detector raises an alert?
 2. If the detector raises an alert, what is the probability that an obstacle is actually present?
 
-#### Solution
+<!-- #### Solution
 
 Let $O$ be the event that an obstacle is present and $A$ be the event that the detector raises an alert. We are given:
 
@@ -517,7 +517,7 @@ P(O\mid A)
 \end{aligned}
 $$
 
-Given an alert, the probability that an obstacle is actually present is approximately 66.7%.
+Given an alert, the probability that an obstacle is actually present is approximately 66.7%. -->
 
 ### 2. Discrete Random Variable: Telemetry Packets
 
@@ -527,7 +527,7 @@ A UAV transmits five telemetry packets during a maneuver. Each packet is receive
 2. What is the probability that at least four packets are received successfully?
 3. Find $E[X]$ and $\operatorname{Var}(X)$.
 
-#### Solution
+<!-- #### Solution
 
 There is a fixed number of independent trials, and each trial has the same success probability. Therefore:
 
@@ -564,7 +564,7 @@ and:
 
 $$
 \operatorname{Var}(X)=np(1-p)=(5)(0.8)(0.2)=0.8.
-$$
+$$ -->
 
 ### 3. Discrete Random Variable: Wind Gusts
 
@@ -573,7 +573,7 @@ The number of unexpected strong wind gusts encountered during a UAV flight is mo
 1. What is the probability that the UAV encounters at most one gust?
 2. What are the expected value and variance of $Y$?
 
-#### Solution
+<!-- #### Solution
 
 The model is:
 
@@ -598,7 +598,7 @@ For a Poisson random variable, both the expectation and variance equal $\lambda$
 
 $$
 E[Y]=2, \qquad \operatorname{Var}(Y)=2.
-$$
+$$ -->
 
 ### 4. Mean and Variance: GPS Lock Acquisition
 
@@ -608,7 +608,7 @@ Before beginning a mission, a UAV repeatedly scans for a reliable GPS lock. Each
 2. Find $E[Z]$ and $\operatorname{Var}(Z)$.
 3. Briefly interpret the expected value in the context of the UAV mission.
 
-#### Solution
+<!-- #### Solution
 
 The UAV repeats independent trials with a constant success probability until the first success. Therefore:
 
@@ -644,7 +644,7 @@ $$
 \approx 0.44.
 $$
 
-Over many mission starts, the UAV will require an average of approximately 1.33 scans to obtain its first reliable GPS lock. This does not mean that a single mission can take 1.33 scans; an individual mission always requires a whole number of scans.
+Over many mission starts, the UAV will require an average of approximately 1.33 scans to obtain its first reliable GPS lock. This does not mean that a single mission can take 1.33 scans; an individual mission always requires a whole number of scans. -->
 
 ## References
 
