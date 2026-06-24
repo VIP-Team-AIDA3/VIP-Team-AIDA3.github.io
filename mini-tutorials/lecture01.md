@@ -476,6 +476,130 @@ For common distributions:
 
 Probability starts with a sample space and events. Venn diagrams help visualize event relationships, while the sum and product rules let us calculate compound probabilities. Bayes' rule updates beliefs using evidence. Discrete random variables turn outcomes into numbers, PMFs assign probabilities to those numbers, and expectation and variance summarize center and spread. Conditional probability ties all of these ideas together by showing how probabilities change when new information is known.
 
+## Practice Questions and Solutions
+
+### 1. Probability and Conditional Probability: Obstacle Detection
+
+During a UAV flight, the probability that an obstacle is present in the planned path is $0.10$. The onboard detector raises an alert with probability $0.90$ when an obstacle is present. When no obstacle is present, it still raises a false alert with probability $0.05$.
+
+1. What is the probability that the detector raises an alert?
+2. If the detector raises an alert, what is the probability that an obstacle is actually present?
+
+#### Solution
+
+Let $O$ be the event that an obstacle is present and $A$ be the event that the detector raises an alert. We are given:
+
+$$
+P(O)=0.10, \qquad P(A\mid O)=0.90, \qquad P(A\mid O^c)=0.05.
+$$
+
+The probability of an alert is found using the law of total probability:
+
+$$
+\begin{aligned}
+P(A)
+&=P(A\mid O)P(O)+P(A\mid O^c)P(O^c) \\
+&=(0.90)(0.10)+(0.05)(0.90) \\
+&=0.09+0.045=0.135.
+\end{aligned}
+$$
+
+Therefore, the detector raises an alert on 13.5% of flights under these assumptions.
+
+Using Bayes' rule:
+
+$$
+\begin{aligned}
+P(O\mid A)
+&=\frac{P(A\mid O)P(O)}{P(A)} \\
+&=\frac{(0.90)(0.10)}{0.135} \\
+&=\frac{2}{3}\approx 0.667.
+\end{aligned}
+$$
+
+Given an alert, the probability that an obstacle is actually present is approximately 66.7%.
+
+### 2. Discrete Random Variable: Telemetry Packets
+
+A UAV transmits five telemetry packets during a maneuver. Each packet is received successfully with probability $0.80$, independently of the other packets. Let $X$ be the number of packets received successfully.
+
+1. What distribution does $X$ follow?
+2. What is the probability that at least four packets are received successfully?
+3. Find $E[X]$ and $\operatorname{Var}(X)$.
+
+#### Solution
+
+There is a fixed number of independent trials, and each trial has the same success probability. Therefore:
+
+$$
+X\sim\operatorname{Binomial}(5,0.80).
+$$
+
+The probability of receiving at least four packets is:
+
+$$
+P(X\geq 4)=P(X=4)+P(X=5).
+$$
+
+Using the Binomial PMF:
+
+$$
+\begin{aligned}
+P(X\geq 4)
+&=\binom{5}{4}(0.8)^4(0.2)+\binom{5}{5}(0.8)^5 \\
+&=5(0.4096)(0.2)+0.32768 \\
+&=0.73728.
+\end{aligned}
+$$
+
+Thus, the probability of receiving at least four packets is approximately 73.7%.
+
+For a Binomial random variable:
+
+$$
+E[X]=np=(5)(0.8)=4
+$$
+
+and:
+
+$$
+\operatorname{Var}(X)=np(1-p)=(5)(0.8)(0.2)=0.8.
+$$
+
+### 3. Discrete Random Variable: Wind Gusts
+
+The number of unexpected strong wind gusts encountered during a UAV flight is modeled as a Poisson random variable with an average of two gusts per flight. Let $Y$ be the number of gusts.
+
+1. What is the probability that the UAV encounters at most one gust?
+2. What are the expected value and variance of $Y$?
+
+#### Solution
+
+The model is:
+
+$$
+Y\sim\operatorname{Poisson}(2).
+$$
+
+The probability of at most one gust is:
+
+$$
+\begin{aligned}
+P(Y\leq 1)
+&=P(Y=0)+P(Y=1) \\
+&=e^{-2}\frac{2^0}{0!}+e^{-2}\frac{2^1}{1!} \\
+&=3e^{-2}\approx 0.4060.
+\end{aligned}
+$$
+
+Therefore, the probability of encountering at most one gust is approximately 40.6%.
+
+For a Poisson random variable, both the expectation and variance equal $\lambda$:
+
+$$
+E[Y]=2, \qquad \operatorname{Var}(Y)=2.
+$$
+
 ## References
 
 - Joseph K. Blitzstein and Jessica Hwang, *Introduction to Probability*, 2nd ed., CRC Press, 2019. Book site: <https://projects.iq.harvard.edu/stat110/home>
