@@ -103,6 +103,60 @@ Bertrand's paradox is a warning: before calculating a probability, define the ra
 
 The lesson is not that probability is broken. The lesson is that a probability model must state what is random and how the random outcome is generated. -->
 
+## Discrete Probability Basics
+
+A probability model is **discrete** when its possible outcomes form a finite or countably infinite set. Examples include the number of GPS satellites visible to a UAV, the number of obstacles detected during a flight, or a flight-mode status selected from a fixed list.
+
+Suppose a UAV classifies the wind condition during the next control interval as one of three outcomes:
+
+$$
+\Omega = \{\text{calm},\text{moderate},\text{strong}\}.
+$$
+
+Based on recent measurements, assume the probabilities are:
+
+| Outcome $x$ | $P(X=x)$ |
+| --- | ---: |
+| Calm | $0.50$ |
+| Moderate | $0.35$ |
+| Strong | $0.15$ |
+
+Each probability must be nonnegative, and the probabilities of all possible outcomes must sum to 1:
+
+$$
+0.50+0.35+0.15=1.
+$$
+
+For a discrete outcome, the probability of an event is found by adding the probabilities of the outcomes belonging to that event. Let $A$ be the event that the wind is not calm:
+
+$$
+A=\{\text{moderate},\text{strong}\}.
+$$
+
+Then:
+
+$$
+P(A)=P(X=\text{moderate})+P(X=\text{strong})
+=0.35+0.15=0.50.
+$$
+
+The **complement** $A^c$ contains every outcome not in $A$. Therefore:
+
+$$
+P(A^c)=1-P(A).
+$$
+
+In this example, $A^c$ is the event that the wind is calm, so $P(A^c)=1-0.50=0.50$.
+
+When all outcomes are equally likely, probability can also be computed by counting:
+
+$$
+P(A)=\frac{\text{number of outcomes in }A}
+{\text{total number of outcomes}}.
+$$
+
+This counting shortcut applies to a fair die or a well-shuffled deck, but it would not apply to the wind example because its three outcomes have different probabilities. Once additional information is observed, such as a strong-wind warning from a nearby weather station, we use conditional probability to update these probabilities.
+
 
 ## Conditional Discrete Probability
 
