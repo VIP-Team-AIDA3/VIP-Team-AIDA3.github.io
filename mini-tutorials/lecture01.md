@@ -600,6 +600,52 @@ $$
 E[Y]=2, \qquad \operatorname{Var}(Y)=2.
 $$
 
+### 4. Mean and Variance: GPS Lock Acquisition
+
+Before beginning a mission, a UAV repeatedly scans for a reliable GPS lock. Each scan succeeds with probability $0.75$, independently of previous scans. Let $Z$ be the number of scans required to obtain the first reliable GPS lock, including the successful scan.
+
+1. What distribution does $Z$ follow?
+2. Find $E[Z]$ and $\operatorname{Var}(Z)$.
+3. Briefly interpret the expected value in the context of the UAV mission.
+
+#### Solution
+
+The UAV repeats independent trials with a constant success probability until the first success. Therefore:
+
+$$
+Z\sim\operatorname{Geometric}(0.75).
+$$
+
+For a Geometric random variable that counts the number of trials up to and including the first success:
+
+$$
+E[Z]=\frac{1}{p}
+$$
+
+and:
+
+$$
+\operatorname{Var}(Z)=\frac{1-p}{p^2}.
+$$
+
+Substituting $p=0.75$ gives:
+
+$$
+E[Z]=\frac{1}{0.75}=\frac{4}{3}\approx 1.33
+$$
+
+and:
+
+$$
+\operatorname{Var}(Z)
+=\frac{1-0.75}{(0.75)^2}
+=\frac{0.25}{0.5625}
+=\frac{4}{9}
+\approx 0.44.
+$$
+
+Over many mission starts, the UAV will require an average of approximately 1.33 scans to obtain its first reliable GPS lock. This does not mean that a single mission can take 1.33 scans; an individual mission always requires a whole number of scans.
+
 ## References
 
 - Joseph K. Blitzstein and Jessica Hwang, *Introduction to Probability*, 2nd ed., CRC Press, 2019. Book site: <https://projects.iq.harvard.edu/stat110/home>
