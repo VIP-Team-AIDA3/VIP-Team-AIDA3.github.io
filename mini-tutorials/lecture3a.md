@@ -308,7 +308,7 @@ Because the service runs over voice radio, it depends on a closed, standardized 
 
 ### 1. Build a Readback
 
-A controller transmits: "Windracers 492, turn right heading 250, climb flight level 120." Write the pilot's correct readback.
+A controller transmits: "Purdue 492, turn right heading 250, climb flight level 120." Write the pilot's correct readback.
 
 ### 2. Find the Error
 
@@ -316,7 +316,7 @@ A pilot transmits: "Roger, cleared for takeoff." What is missing or wrong, and w
 
 ### 3. Order a Conditional Clearance
 
-A controller wants Windracers 492 to line up on runway 22 right only after a departing Piper has passed. Put these four parts in the correct order: the clearance, the condition restated, the aircraft identification, the condition.
+A controller wants Purdue 492 to line up on runway 22 right only after a departing Piper has passed. Put these four parts in the correct order: the clearance, the condition restated, the aircraft identification, the condition.
 
 ### 4. Service or Clearance
 
