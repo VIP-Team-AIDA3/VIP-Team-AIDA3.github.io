@@ -224,7 +224,7 @@ The strict language in the previous section can feel excessive until you see wha
 
 ### Tenerife, 1977: The Accident That Built the Rules
 
-<div align="center"><img width="607" height="169" alt="Tenerife" src="https://github.com/user-attachments/assets/75c4730a-0e3e-47c3-afe6-8ef3c8534e66" /></div>
+<div align="center"><img width="768" height="280" alt="Tenerife-airport-disaster-crashsite-overview-german" src="https://github.com/user-attachments/assets/67dc9072-e733-46c1-86c8-dae9973cc2dc" /></div>
 
 On 27 March 1977, two Boeing 747s collided on the runway at Los Rodeos Airport in Tenerife. 583 people died, and it remains the deadliest accident in aviation history [8].
 
