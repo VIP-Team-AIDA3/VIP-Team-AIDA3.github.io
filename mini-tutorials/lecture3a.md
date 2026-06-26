@@ -350,11 +350,11 @@ The questions above are there to test these ideas. Work through them first, then
 
 ## Solutions
 
-**1.** "Right heading 250, climb flight level 120, Windracers 492." Both the heading and the level are read back, and the callsign comes last.
+**1.** "Right heading 250, climb flight level 120, Purdue 492." Both the heading and the level are read back, and the callsign comes last.
 
-**2.** Two problems. "Roger" must never replace a readback, and there is no callsign. The controller cannot tell which aircraft accepted the takeoff clearance, and on a busy frequency another aircraft might act on it. A correct reply is "Cleared for takeoff runway 22 right, Windracers 492."
+**2.** Two problems. "Roger" must never replace a readback, and there is no callsign. The controller cannot tell which aircraft accepted the takeoff clearance, and on a busy frequency another aircraft might act on it. A correct reply is "Cleared for takeoff runway 22 right, Purdue 492."
 
-**3.** Identification, condition, clearance, restated condition: "Windracers 492, behind the departing Piper, line up runway 22 right behind."
+**3.** Identification, condition, clearance, restated condition: "Purdue 492, behind the departing Piper, line up runway 22 right behind."
 
 **4.** (a) clearance, (b) information, (c) clearance, (d) information. Only (a) and (c) authorize the aircraft to do something. Items (b) and (d) give the pilot information to use in their own decisions.
 
