@@ -102,7 +102,7 @@ Air traffic control is not provided the same way everywhere. Airspace is divided
 
 The classes can be read as a scale, from the most tightly controlled to the least. The figure below shows the United States implementation. It is useful here because, alongside the altitude limits, it marks what a small uncrewed aircraft must do in each class.
 
-<img width="624" height="252" alt="AirspaceClass" src="https://github.com/user-attachments/assets/47e60286-86a3-4323-b262-ea36e3257ca2" />
+<div align="center"><img width="624" height="252" alt="AirspaceClass" src="https://github.com/user-attachments/assets/47e60286-86a3-4323-b262-ea36e3257ca2" /></div>
 
 *Fig. 1 Airspace classes and their altitude limits, annotated for small UAS operators. The controlled classes (B, C, D, and the surface area of E) require air traffic authorization before flight, while Class G does not. Source: Federal Aviation Administration [11].*
 
@@ -224,7 +224,7 @@ The strict language in the previous section can feel excessive until you see wha
 
 ### Tenerife, 1977: The Accident That Built the Rules
 
-<img width="607" height="169" alt="Tenerife" src="https://github.com/user-attachments/assets/75c4730a-0e3e-47c3-afe6-8ef3c8534e66" />
+<div align="center"><img width="607" height="169" alt="Tenerife" src="https://github.com/user-attachments/assets/75c4730a-0e3e-47c3-afe6-8ef3c8534e66" /></div>
 
 On 27 March 1977, two Boeing 747s collided on the runway at Los Rodeos Airport in Tenerife. 583 people died, and it remains the deadliest accident in aviation history [8].
 
@@ -248,7 +248,7 @@ These phrases are not interchangeable. "Ready for departure" is a status report 
 
 ### LaGuardia, 2026: The Problem Has Not Gone Away
 
-<img width="624" height="779" alt="LaGuardia" src="https://github.com/user-attachments/assets/b9f8bd0b-f18a-4984-b063-ac53bceace5b" />
+<div align="center"><img width="468" height="584" alt="LaGuardia" src="https://github.com/user-attachments/assets/b9f8bd0b-f18a-4984-b063-ac53bceace5b" /></div>
 
 
 Standard phraseology has prevented countless accidents, but it has not removed the underlying risk, because the system still depends on people hearing and understanding each other over a shared radio. On 22 March 2026, a regional jet operating as Air Canada Express Flight 8646 was landing at New York LaGuardia when it collided with an airport fire and rescue truck that had been cleared to cross the active runway. Both pilots were killed, and passengers and firefighters were injured. The investigation is led by the National Transportation Safety Board and is ongoing, so the account here rests on preliminary findings [7], [8].
