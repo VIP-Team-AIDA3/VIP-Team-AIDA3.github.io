@@ -102,7 +102,7 @@ Air traffic control is not provided the same way everywhere. Airspace is divided
 
 The classes can be read as a scale, from the most tightly controlled to the least. The figure below shows the United States implementation. It is useful here because, alongside the altitude limits, it marks what a small uncrewed aircraft must do in each class.
 
-<img width="624" height="779" alt="Airspace_Class" src="https://github.com/user-attachments/assets/057b9554-7e14-4d03-95f3-16fdb2c4d187" />
+<img width="624" height="252" alt="AirspaceClass" src="https://github.com/user-attachments/assets/47e60286-86a3-4323-b262-ea36e3257ca2" />
 
 *Fig. 1 Airspace classes and their altitude limits, annotated for small UAS operators. The controlled classes (B, C, D, and the surface area of E) require air traffic authorization before flight, while Class G does not. Source: Federal Aviation Administration [11].*
 
@@ -248,7 +248,8 @@ These phrases are not interchangeable. "Ready for departure" is a status report 
 
 ### LaGuardia, 2026: The Problem Has Not Gone Away
 
-<img width="624" height="252" alt="LaGuardia" src="https://github.com/user-attachments/assets/3100fa0a-aead-4005-8f23-2ced1c4c5222" />
+<img width="624" height="779" alt="LaGuardia" src="https://github.com/user-attachments/assets/b9f8bd0b-f18a-4984-b063-ac53bceace5b" />
+
 
 Standard phraseology has prevented countless accidents, but it has not removed the underlying risk, because the system still depends on people hearing and understanding each other over a shared radio. On 22 March 2026, a regional jet operating as Air Canada Express Flight 8646 was landing at New York LaGuardia when it collided with an airport fire and rescue truck that had been cleared to cross the active runway. Both pilots were killed, and passengers and firefighters were injured. The investigation is led by the National Transportation Safety Board and is ongoing, so the account here rests on preliminary findings [7], [8].
 
