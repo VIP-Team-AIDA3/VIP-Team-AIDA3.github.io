@@ -362,6 +362,12 @@ The questions above are there to test these ideas. Work through them first, then
 
 **6.** First, an instruction whose intended recipient was not immediately clear; the safeguard is callsign discipline, addressing every transmission to a specific station and ending a readback with the callsign. Second, a critical transmission lost because two parties spoke on the same frequency at once; the safeguard is disciplined radio procedure, including standard phraseology and readback, so that a blocked or missed message is detected rather than assumed received.
 
+## Lecture Quiz
+
+Follow the link below for the lecture quiz to receive full participation for the activity.
+
+[Quiz Module](https://forms.gle/njcPKiZbe3hmxTwQ8)
+
 ## References
 
 - [1] International Civil Aviation Organization, *Procedures for Air Navigation Services - Air Traffic Management (PANS-ATM)*, Doc 4444, 16th ed. Montreal: ICAO, 2016.
