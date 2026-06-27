@@ -652,3 +652,5 @@ Over many mission starts, the UAV will require an average of approximately 1.33 
 - OpenStax, *Introductory Statistics*, probability and discrete random variable chapters: <https://openstax.org/details/books/introductory-statistics>
 - Joseph Bertrand, *Calcul des probabilités*, 1889. See overview of Bertrand's chord paradox: <https://en.wikipedia.org/wiki/Bertrand_paradox_(probability)>
 - Richard von Mises, frequentist interpretation overview: <https://plato.stanford.edu/entries/probability-interpret/>
+- An exceptional set of lectures on probability and statistics by Steven Brunton of UWash: <https://youtube.com/playlist?list=PLMrJAkhIeNNR3sNYvfgiKgcStwuPSts9V&si=sFO1lSGlWPbBZHzg/>
+- Code to plot the discrete probabilirt distributions: <https://github.com/VIP-Team-AIDA3/MiniTutorialCodes/blob/master/mini-tutorial%201%20-%20discrete%20probability.ipynb>
