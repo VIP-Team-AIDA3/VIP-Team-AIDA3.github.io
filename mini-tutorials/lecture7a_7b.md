@@ -449,26 +449,6 @@ The connectives combine robustness values numerically. Conjunction and always ta
 
 ---
 
-## 10. Putting it to work: specification and monitoring
-
-The payoff of the whole tutorial is that these logics are the languages in which we state what a system must do, precisely enough that a machine can check it. It is worth stepping back to see how the layers stack up, because each one was introduced to overcome a specific limit of the layer below.
-
-Boolean logic gave us true and false and the operations that combine them. Propositional logic wrapped those operations in statements and gave us entailment, the notion of one claim following from others. Predicates and quantifiers let us talk about objects, properties, and relations, and to make general claims over a whole domain. First-order logic completed that picture into a full and standard specification language, at the cost of having no notion of time. Temporal logic added time. Linear temporal logic reasons about a single execution and cleanly separates safety from liveness. Branching time reasons about all possible executions. Signal temporal logic brought in real-valued signals, explicit time bounds, and a quantitative robustness measure, which is what real sensor data and real deadlines demand.
-
-In an autonomous flight setting the division of labour is natural. Design-time verification uses the more expressive logics to prove that a model of the system satisfies its requirements across all its behaviours. Runtime monitoring uses linear time and signal temporal logic to watch an actual flight, check safety specifications instant by instant, and report robustness margins so that a requirement being approached is visible before it is breached. A specification like "the aircraft always stays within its geofence, and within 30 seconds of a low-battery signal it begins a return to launch" is not a comment in a document. Written in STL it is a formal object that a monitor can evaluate against the telemetry of a real flight and turn into a verdict and a margin.
-
-That is the arc of these two days. We began with two values and a handful of truth tables, and we ended with a formal, checkable, quantitative statement of what it means for an autonomous aircraft to fly safely.
-
-### 10.1 Capstone exercises
-
-1. Pick a small autonomous system you understand, and list three requirements for it in plain English.
-2. For each requirement, decide whether it is naturally a safety or a liveness property.
-3. Translate each requirement into the most appropriate logic from this tutorial, and justify the choice of logic.
-4. For any requirement involving a real-valued quantity or a deadline, write it in STL and describe what its robustness value would measure.
-5. Identify one requirement that you cannot express in any of these logics, and describe what additional expressive power it would need.
-
----
-
 ## Appendix: symbol reference
 
 | Symbol | Name | Meaning |
