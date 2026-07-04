@@ -7,6 +7,7 @@ parts:
         sections:
           - file: mini-tutorials/lecture01
           - file: mini-tutorials/lecture3a
+          - file: mini-tutorials/lecture7a_7b
   - caption: Streams
     chapters:
       - file: streams/RL for GNC/description
