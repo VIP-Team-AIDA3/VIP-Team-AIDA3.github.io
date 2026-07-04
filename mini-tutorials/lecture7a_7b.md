@@ -1,5 +1,7 @@
 # A Tutorial in Logic: From Boolean operations to temporal logic for autonomous systems
 
+This tutorial covers logic systems used in autonomous systems.
+
 ---
 
 ## 1. Why logic
