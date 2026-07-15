@@ -36,7 +36,7 @@ Consider the case of detecting an edge from a grey-scale image. We can think of 
 
 -- TODO
 
-## Hough Transform
+### Hough Transform
 
 Alternatively, we can detect edge and other shapes of a functional form using the Hough transform. Consider a 2D image tensor as a graph, with points of high intensity being points on the graph. We want to find a line that \textit{directly} passes through as many points as possible. This is different from a regression problem as in regression, the optimum we are solving for is determined by minimizing the loss function (sum of squared residuals), whereas in a Hough transform, we want to maximize the amount of points intersected.
 
@@ -70,7 +70,7 @@ So far, we have only covered images that are 2D, meaning they are only grey scal
 
 To build more flexible models, we can introduce multiple such filters in a convolution layer, allowing each set of filters to detect different features. The filter tensor is now of dimensionality $M \cross M \cross C_{in} \cross C_{out}$, where $C_{out}$ is the number of output channels.
 
-## Pooling
+### Pooling
 
 A convolutional layer encodes translational equivariance, meaning the outputs of a feature map are directly related to the pixels in the input image regardless of where the pixels are located (if the pixels are moved, the associated outputs of the feature map move alongside it). However, in cases such as classifying an image, we want the output to be invariant to translations of the input. For example, the relative positions of the eyes, nose, and mouth result in a face and not these individual features in random locations. Small translations in these features should not affect the classification (for example, there being different face shapes) and so we want to be invariant to such changes. This can be solved using \textit{pooling}.
 
@@ -83,11 +83,30 @@ Notice that although this helps in building local translation invariance, poolin
 As an example of pooling, if we have a feature map with $8$ channels, each of dimensionality $64 \cross 64$, and we apply max-pooling with a filter of size $2 \cross 2$ and a stride of 2, the output will be a tensor of dimensionality $32 \cross 32 \cross 8$,
 
 
+## Visualizing CNN outputs
+
 ## Object detection
 
-## Bounding boxes and evaluation metrics, NMS
+Consider the case where there are many objects within an image, and we wish to detect the prescence and class of each object. A widely used approach is to use \textit{bounding boxes}, which consists of a rectangle that "bounds" a detected object. The box can be expressed as the coordinates of its centroid along with the width and height in the form of a vector $b = \{b_x, b_y, b_W, b_H\}$. In terms of classification, a fifth feature, the confidence in a class label, is added.
 
-## Scalar transformations (SIFT can be used here)
+### Sliding windows
+
+### Evaluation
+
+To evaluate a model's performance on object detection, a commonly implemented method is \textit{Intersection over Union} (IoU). IoU can be defined as:
+
+$$IoU = \frac{\text{Area of Intersection}}{\text{Area of Union}}$$.
+
+As this is a ratio, it lies in the range between $0$ and $1$, where a value closer to 1 represents a better evaluation. Note that IoU is not used as a loss function as it is hard to optimize using gradient descent, and is only used as an evaluation metric.
+
+### Scalar transformations
+
+Alongside looking for objects in different parts of the image, we can also look for objects at different scales and aspect ratios. For example, a cat sitting upright vs lying down would have different aspect ratios. To solve this, we can simply use a fixed input window with multiple copies of the input image at different scales and aspect ratios. Object detection is then employed for each image, and the bounding box is then transformed back into the original image space.
+
+#### SIFT
+
+
+### Non-Max Supression
 
 ## References
 
