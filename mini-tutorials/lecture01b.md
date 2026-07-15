@@ -459,6 +459,269 @@ In each case, the model predicts parameters of a probability distribution, not j
 
 Continuous random variables use densities rather than probability masses. PDFs describe density, CDFs accumulate probability, and expectations summarize distributions through averages. Covariance describes how random variables vary together. Bayesian probability treats unknown parameters as uncertain and updates that uncertainty with data. The Gaussian distribution is the workhorse distribution for noise, errors, and latent variables, while the exponential distribution models waiting times. The exponential family unifies many distributions used in machine learning and gives a clean way to connect probability models, sufficient statistics, likelihoods, and inference.
 
+## Practice Questions
+
+### 1. PDF and CDF: UAV Altitude Error
+
+A UAV's altitude error $X$, measured in meters, is modeled as uniformly distributed between $-2$ and $2$:
+
+$$
+p(x)=
+\begin{cases}
+\frac{1}{4}, & -2\leq x\leq 2,\\
+0, & \text{otherwise}.
+\end{cases}
+$$
+
+1. Write the CDF $F(x)=P(X\leq x)$ as a piecewise function.
+2. Compute $P(-0.5\leq X\leq 0.5)$.
+3. Compute $F(1)$.
+4. Compute $P(-1<X\leq 1.5)$ using the CDF.
+
+#### Solution
+
+Since the density is uniform on an interval of length 4, the CDF increases linearly from 0 to 1 over $[-2,2]$:
+
+$$
+F(x)=
+\begin{cases}
+0, & x<-2,\\
+\frac{x+2}{4}, & -2\leq x\leq 2,\\
+1, & x>2.
+\end{cases}
+$$
+
+The probability that the altitude error lies between $-0.5$ and $0.5$ is:
+
+$$
+P(-0.5\leq X\leq 0.5)
+=\int_{-0.5}^{0.5}\frac{1}{4}\,dx
+=\frac{1}{4}=0.25.
+$$
+
+Also:
+
+$$
+F(1)=\frac{1+2}{4}=\frac{3}{4}=0.75.
+$$
+
+Using the CDF:
+
+$$
+P(-1<X\leq 1.5)=F(1.5)-F(-1)
+=\frac{3.5}{4}-\frac{1}{4}
+=0.625.
+$$
+
+### 2. Exponential Distribution: Time Until Link Dropout
+
+During a UAV mission, the time $T$ until the next communication dropout is modeled as:
+
+$$
+T\sim\operatorname{Exponential}(0.15),
+$$
+
+where time is measured in minutes.
+
+1. What is the expected time until the next dropout?
+2. What is the probability that no dropout occurs during the first 4 minutes?
+3. What is the probability that a dropout occurs within 10 minutes?
+4. Given that no dropout has occurred during the first 6 minutes, what is the probability that the UAV goes at least 4 more minutes without a dropout?
+
+#### Solution
+
+For an exponential random variable with rate $\lambda=0.15$:
+
+$$
+\mathbb{E}[T]=\frac{1}{\lambda}=\frac{1}{0.15}\approx 6.67 \text{ minutes}.
+$$
+
+The probability of no dropout during the first 4 minutes is:
+
+$$
+P(T>4)=e^{-0.15(4)}=e^{-0.6}\approx 0.5488.
+$$
+
+The probability of a dropout within 10 minutes is:
+
+$$
+P(T\leq 10)=1-e^{-0.15(10)}
+=1-e^{-1.5}
+\approx 0.7769.
+$$
+
+Using the memoryless property:
+
+$$
+P(T>10\mid T>6)=P(T>4)=e^{-0.6}\approx 0.5488.
+$$
+
+So, even after 6 dropout-free minutes, the probability of going at least 4 more minutes without a dropout is still about 54.9%.
+
+### 3. Gaussian Distribution: Cross-Track Error
+
+A UAV's cross-track error $X$, measured in meters, is modeled as:
+
+$$
+X\sim\mathcal{N}(0,1.5^2).
+$$
+
+1. What is the probability that the UAV stays within 3 meters of the planned path?
+2. What is the probability that the UAV is more than 2 meters to the right of the planned path?
+3. Find the interval centered at zero that contains approximately 95% of the cross-track error.
+4. If the safety corridor is $[-2.5,2.5]$ meters, what is the probability that the UAV leaves the corridor?
+
+#### Solution
+
+Standardize using:
+
+$$
+Z=\frac{X-\mu}{\sigma}=\frac{X}{1.5}.
+$$
+
+For the probability of staying within 3 meters:
+
+$$
+P(|X|\leq 3)=P\left(|Z|\leq \frac{3}{1.5}\right)
+=P(|Z|\leq 2).
+$$
+
+Using the standard normal CDF $\Phi$:
+
+$$
+P(|Z|\leq 2)=\Phi(2)-\Phi(-2)
+=2\Phi(2)-1
+\approx 0.9545.
+$$
+
+The probability of being more than 2 meters to the right is:
+
+$$
+P(X>2)=P\left(Z>\frac{2}{1.5}\right)
+=P(Z>1.333)
+=1-\Phi(1.333)
+\approx 0.0912.
+$$
+
+An interval centered at zero containing approximately 95% of the error is:
+
+$$
+0\pm 1.96(1.5),
+$$
+
+so:
+
+$$
+[-2.94,2.94]\text{ meters}.
+$$
+
+For the safety corridor:
+
+$$
+P(|X|>2.5)
+=2P(X>2.5)
+=2P\left(Z>\frac{2.5}{1.5}\right).
+$$
+
+Since $2.5/1.5\approx 1.667$:
+
+$$
+P(|X|>2.5)
+=2(1-\Phi(1.667))
+\approx 0.0956.
+$$
+
+So the UAV leaves the corridor with probability about 9.6%.
+
+### 4. Bayesian Probability with a Gaussian Model: Sensor Bias
+
+A UAV estimates the bias $b$ in an altitude sensor, measured in meters. Before collecting new data, the prior belief is:
+
+$$
+b\sim\mathcal{N}(0,4).
+$$
+
+During calibration, the UAV records three independent bias measurements:
+
+$$
+x_1=1.2,\qquad x_2=0.6,\qquad x_3=0.9.
+$$
+
+Assume:
+
+$$
+x_n\mid b\sim\mathcal{N}(b,1),
+\qquad n=1,2,3.
+$$
+
+1. Compute the sample mean $\bar{x}$.
+2. Compute the posterior variance $\tau_N^2$.
+3. Compute the posterior mean $\mu_N$.
+4. Based on the posterior mean, should the altitude estimate be shifted upward or downward?
+
+#### Solution
+
+The sample mean is:
+
+$$
+\bar{x}=\frac{1.2+0.6+0.9}{3}=0.9.
+$$
+
+Here:
+
+$$
+\mu_0=0,\qquad \tau_0^2=4,\qquad \sigma^2=1,\qquad N=3.
+$$
+
+The posterior precision is:
+
+$$
+\frac{1}{\tau_N^2}
+=
+\frac{1}{\tau_0^2}
++
+\frac{N}{\sigma^2}
+=
+\frac{1}{4}+3
+=
+\frac{13}{4}.
+$$
+
+Therefore:
+
+$$
+\tau_N^2=\frac{4}{13}\approx 0.3077.
+$$
+
+The posterior mean is:
+
+$$
+\mu_N
+=
+\tau_N^2
+\left(
+\frac{\mu_0}{\tau_0^2}
++
+\frac{N\bar{x}}{\sigma^2}
+\right).
+$$
+
+Substitute the values:
+
+$$
+\mu_N
+=
+\frac{4}{13}
+\left(
+0+3(0.9)
+\right)
+=
+\frac{10.8}{13}
+\approx 0.831.
+$$
+
+The posterior estimate of the sensor bias is positive, so the sensor appears to read about $0.831$ meters too high on average. To correct the altitude estimate, subtract this bias from the sensor reading.
+
 ## References
 
 - [1] Christopher M. Bishop, *Pattern Recognition and Machine Learning*, Springer, 2006. Book site: <https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/>
