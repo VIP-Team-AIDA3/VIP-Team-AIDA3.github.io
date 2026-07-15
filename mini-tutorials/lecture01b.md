@@ -284,9 +284,11 @@ $$
 
 So this model predicts about a 45.1% chance of a dropout within 3 minutes.
 
-## The Gaussian Distribution from a Bayesian Perspective
+## Gaussian Likelihood and Bayesian Inference
 
-In frequentist parameter estimation, the parameters of a Gaussian distribution are often treated as fixed unknown constants. In Bayesian inference, the parameters are uncertain quantities with probability distributions.
+The Gaussian distribution is useful both for point estimation and for Bayesian inference. The likelihood function appears in both approaches. The difference is that maximum likelihood estimation uses the likelihood to choose a single best parameter value, while Bayesian inference combines the likelihood with a prior to obtain a full posterior distribution over the parameter.
+
+### The Gaussian Likelihood
 
 Suppose altitude measurement errors are modeled as independent Gaussian observations:
 
@@ -310,6 +312,8 @@ As a function of $\mu$, this likelihood says which mean values make the observed
 
 *Fig. 3. For Gaussian data with known variance, the likelihood as a function of the mean is maximized at the sample mean.*
 
+### Maximum Likelihood Estimate
+
 Taking the logarithm gives:
 
 $$
@@ -332,11 +336,24 @@ $$
 \mu_{\mathrm{ML}}=\frac{1}{N}\sum_{n=1}^{N}x_n.
 $$
 
-Now place a Gaussian prior on $\mu$:
+Up to this point, we have used the likelihood to compute a point estimate. This is the maximum likelihood approach. To make the model Bayesian, we treat the unknown mean $\mu$ itself as uncertain before seeing the current data.
+
+### Adding a Prior: Bayesian Gaussian Inference
+
+Specifying a **prior** means choosing a probability distribution for the unknown parameter before using the current dataset. For the unknown Gaussian mean, a common choice is another Gaussian:
 
 $$
 \mu\sim\mathcal{N}(\mu_0,\tau_0^2).
 $$
+
+This statement says that, before observing the current data $\mathcal{D}$, we believe plausible values of $\mu$ are centered around $\mu_0$, with uncertainty measured by $\tau_0^2$.
+
+- $\mu_0$ is the prior mean. It is the value of $\mu$ we would expect before seeing the current data.
+- $\tau_0^2$ is the prior variance. A small value means strong prior confidence near $\mu_0$; a large value means weak prior information.
+
+For example, if previous calibration suggests that a UAV altitude sensor has nearly zero average error, we might use $\mu_0=0$. If that calibration was very reliable, we would choose a small $\tau_0^2$. If it was old, limited, or from a different sensor, we would choose a larger $\tau_0^2$.
+
+The prior is not the final answer. It is combined with the likelihood from the current measurements. Values of $\mu$ receive high posterior probability only when they are plausible under the prior and also explain the observed data well.
 
 The posterior is proportional to likelihood times prior:
 
@@ -478,7 +495,7 @@ $$
 3. Compute $F(1)$.
 4. Compute $P(-1<X\leq 1.5)$ using the CDF.
 
-#### Solution
+<!-- #### Solution
 
 Since the density is uniform on an interval of length 4, the CDF increases linearly from 0 to 1 over $[-2,2]$:
 
@@ -511,7 +528,7 @@ $$
 P(-1<X\leq 1.5)=F(1.5)-F(-1)
 =\frac{3.5}{4}-\frac{1}{4}
 =0.625.
-$$
+$$ -->
 
 ### 2. Exponential Distribution: Time Until Link Dropout
 
@@ -528,7 +545,7 @@ where time is measured in minutes.
 3. What is the probability that a dropout occurs within 10 minutes?
 4. Given that no dropout has occurred during the first 6 minutes, what is the probability that the UAV goes at least 4 more minutes without a dropout?
 
-#### Solution
+<!-- #### Solution
 
 For an exponential random variable with rate $\lambda=0.15$:
 
@@ -557,6 +574,7 @@ P(T>10\mid T>6)=P(T>4)=e^{-0.6}\approx 0.5488.
 $$
 
 So, even after 6 dropout-free minutes, the probability of going at least 4 more minutes without a dropout is still about 54.9%.
+-->
 
 ### 3. Gaussian Distribution: Cross-Track Error
 
@@ -571,7 +589,7 @@ $$
 3. Find the interval centered at zero that contains approximately 95% of the cross-track error.
 4. If the safety corridor is $[-2.5,2.5]$ meters, what is the probability that the UAV leaves the corridor?
 
-#### Solution
+<!-- #### Solution
 
 Standardize using:
 
@@ -632,6 +650,7 @@ P(|X|>2.5)
 $$
 
 So the UAV leaves the corridor with probability about 9.6%.
+-->
 
 ### 4. Bayesian Probability with a Gaussian Model: Sensor Bias
 
@@ -659,7 +678,7 @@ $$
 3. Compute the posterior mean $\mu_N$.
 4. Based on the posterior mean, should the altitude estimate be shifted upward or downward?
 
-#### Solution
+<!-- #### Solution
 
 The sample mean is:
 
@@ -721,6 +740,7 @@ $$
 $$
 
 The posterior estimate of the sensor bias is positive, so the sensor appears to read about $0.831$ meters too high on average. To correct the altitude estimate, subtract this bias from the sensor reading.
+-->
 
 ## References
 
