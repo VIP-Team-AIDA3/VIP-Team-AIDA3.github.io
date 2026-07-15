@@ -1,6 +1,6 @@
 # Mini-Tutorial 1B - Probability Distributions
 
-This tutorial extends Mini-Tutorial 1 from discrete probability to continuous random variables and probability distributions. The presentation follows the probabilistic modeling viewpoint used throughout Bishop's *Pattern Recognition and Machine Learning* and *Deep Learning: Foundations and Concepts*: uncertainty is represented with probability distributions, learning is framed as inference from data, and many machine learning models are built by choosing a distributional form and fitting its parameters [1], [2].
+This tutorial extends Mini-Tutorial 1 from discrete probability to continuous random variables and probability distributions. The central modeling idea is that uncertainty can be represented with probability distributions, learning can be framed as inference from data, and many machine learning models can be built by choosing a distributional form and fitting its parameters.
 
 ## Basics of Densities: PDF and CDF
 
@@ -46,13 +46,9 @@ $$
 P(a<X\leq b)=F(b)-F(a).
 $$
 
-```{figure} figures/continuous-pdf-cdf.png
----
-name: continuous-pdf-cdf
-alt: A probability density function and its cumulative distribution function.
----
-A PDF assigns density, and probability is area under the curve. A CDF gives cumulative probability up to a point.
-```
+![A probability density function and its cumulative distribution function.](figures/continuous-pdf-cdf.png)
+
+*Fig. 1. A PDF assigns density, and probability is area under the curve. A CDF gives cumulative probability up to a point.*
 
 ## Expectations and Covariances
 
@@ -104,13 +100,9 @@ $$
 
 Positive covariance means the two quantities tend to move together. Negative covariance means one tends to increase when the other decreases. Near-zero covariance means there is no linear relationship, although nonlinear dependence may still exist.
 
-```{figure} figures/covariance-ellipse.png
----
-name: covariance-ellipse
-alt: Scatter plot with an ellipse showing positive covariance.
----
-Covariance describes how random variables vary together. For two-dimensional Gaussian data, the covariance matrix controls the orientation and width of the elliptical contours.
-```
+![Scatter plot with an ellipse showing positive covariance.](figures/covariance-ellipse.png)
+
+*Fig. 2. Covariance describes how random variables vary together. For two-dimensional Gaussian data, the covariance matrix controls the orientation and width of the elliptical contours.*
 
 ### UAV Example: Position Error
 
@@ -128,7 +120,7 @@ The mean $\boldsymbol{\mu}$ gives the average bias in the estimate. The covarian
 
 ## Bayesian Probability
 
-Bishop's books use probability in a Bayesian sense: probability can represent uncertainty about unknown quantities, not only long-run frequencies [1], [2]. In this view, a model parameter can be uncertain and can have a probability distribution.
+In the Bayesian view, probability can represent uncertainty about unknown quantities, not only long-run frequencies. A model parameter can be uncertain and can have a probability distribution.
 
 Let $\boldsymbol{\theta}$ be unknown model parameters and let $\mathcal{D}$ be observed data. Bayes' rule gives:
 
@@ -314,13 +306,9 @@ $$
 
 As a function of $\mu$, this likelihood says which mean values make the observed data most plausible.
 
-```{figure} figures/gaussian-likelihood.png
----
-name: gaussian-likelihood
-alt: Gaussian likelihood curve over candidate values of the mean.
----
-For Gaussian data with known variance, the likelihood as a function of the mean is maximized at the sample mean.
-```
+![Gaussian likelihood curve over candidate values of the mean.](figures/gaussian-likelihood.png)
+
+*Fig. 3. For Gaussian data with known variance, the likelihood as a function of the mean is maximized at the sample mean.*
 
 Taking the logarithm gives:
 
@@ -393,7 +381,7 @@ This idea appears throughout Bayesian machine learning. A model does not only ou
 
 ## Exponential Family Basics
 
-Many probability distributions used in machine learning belong to the **exponential family**. Bishop emphasizes this family because it gives a common language for likelihoods, sufficient statistics, conjugate priors, generalized linear models, and many probabilistic deep learning models [1], [2].
+Many probability distributions used in machine learning belong to the **exponential family**. This family gives a common language for likelihoods, sufficient statistics, conjugate priors, generalized linear models, and many probabilistic deep learning models.
 
 A distribution belongs to the exponential family if it can be written as:
 
@@ -416,13 +404,9 @@ The terms are:
 
 The phrase **sufficient statistic** means that, for inference about the parameter, the data can be compressed into $\sum_n \mathbf{u}(x_n)$ without losing information relevant to that model.
 
-```{figure} figures/exponential-family-examples.png
----
-name: exponential-family-examples
-alt: Plots of Gaussian, exponential, and Poisson distributions as examples related to the exponential family.
----
-The Gaussian, exponential, Bernoulli, Binomial, categorical, Gamma, Beta, and Poisson distributions are all connected through the exponential-family form, although some are continuous and some are discrete.
-```
+![Plots of Gaussian, exponential, and Poisson distributions as examples related to the exponential family.](figures/exponential-family-examples.png)
+
+*Fig. 4. The Gaussian, exponential, Bernoulli, Binomial, categorical, Gamma, Beta, and Poisson distributions are all connected through the exponential-family form, although some are continuous and some are discrete.*
 
 ### Example: Gaussian with Known Variance
 

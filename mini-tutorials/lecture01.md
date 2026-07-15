@@ -1,4 +1,4 @@
-# Mini-Tutorial 1 - Probability Basics
+# Mini-Tutorial 1A - Probability Basics
 
 Probability is the language we use when outcomes are uncertain but not completely arbitrary. It lets us say more than "maybe." We can quantify how likely an event is, combine pieces of evidence, compare competing explanations, and make decisions before we know exactly what will happen.
 
