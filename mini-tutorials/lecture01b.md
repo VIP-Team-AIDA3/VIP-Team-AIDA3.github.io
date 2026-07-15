@@ -118,49 +118,6 @@ $$
 
 The mean $\boldsymbol{\mu}$ gives the average bias in the estimate. The covariance matrix describes uncertainty and correlation. If east and north errors have positive covariance, then a large east error often comes with a large north error. A planner can use this covariance to keep a larger safety margin when flying near obstacles.
 
-## Bayesian Probability
-
-In the Bayesian view, probability can represent uncertainty about unknown quantities, not only long-run frequencies. A model parameter can be uncertain and can have a probability distribution.
-
-Let $\boldsymbol{\theta}$ be unknown model parameters and let $\mathcal{D}$ be observed data. Bayes' rule gives:
-
-$$
-p(\boldsymbol{\theta}\mid\mathcal{D})
-=
-\frac{p(\mathcal{D}\mid\boldsymbol{\theta})p(\boldsymbol{\theta})}
-{p(\mathcal{D})}.
-$$
-
-The terms are:
-
-- $p(\boldsymbol{\theta})$: the **prior**, representing uncertainty before seeing the data.
-- $p(\mathcal{D}\mid\boldsymbol{\theta})$: the **likelihood**, describing how probable the data are under each parameter value.
-- $p(\mathcal{D})$: the **evidence**, which normalizes the posterior.
-- $p(\boldsymbol{\theta}\mid\mathcal{D})$: the **posterior**, representing uncertainty after seeing the data.
-
-For continuous parameters, the evidence is an integral:
-
-$$
-p(\mathcal{D})=\int p(\mathcal{D}\mid\boldsymbol{\theta})p(\boldsymbol{\theta})\,d\boldsymbol{\theta}.
-$$
-
-This is the core Bayesian workflow:
-
-1. Start with a prior distribution.
-2. Use the likelihood to connect parameters to data.
-3. Compute or approximate the posterior.
-4. Use the posterior for prediction or decision-making.
-
-### UAV Example: Sensor Bias
-
-Suppose a UAV's barometer has an unknown altitude bias $b$. Before flight, calibration data suggest the bias is probably near zero, so we choose a prior such as:
-
-$$
-b\sim\mathcal{N}(0,\tau_0^2).
-$$
-
-During flight, the UAV compares barometer altitude with another altitude estimate and observes data $\mathcal{D}$. Bayes' rule updates the prior into a posterior $p(b\mid\mathcal{D})$. The autopilot can then correct altitude using the posterior mean and inflate its safety margin using the posterior variance.
-
 ## The Gaussian Distribution
 
 The **Gaussian distribution**, also called the normal distribution, is central in pattern recognition and deep learning because it is mathematically convenient, often approximates aggregate noise, and extends naturally to high-dimensional vectors.
@@ -283,6 +240,49 @@ P(T\leq 3)=1-e^{-0.2\cdot 3}
 $$
 
 So this model predicts about a 45.1% chance of a dropout within 3 minutes.
+
+## Bayesian Probability
+
+In the Bayesian view, probability can represent uncertainty about unknown quantities, not only long-run frequencies. A model parameter can be uncertain and can have a probability distribution.
+
+Let $\boldsymbol{\theta}$ be unknown model parameters and let $\mathcal{D}$ be observed data. Bayes' rule gives:
+
+$$
+p(\boldsymbol{\theta}\mid\mathcal{D})
+=
+\frac{p(\mathcal{D}\mid\boldsymbol{\theta})p(\boldsymbol{\theta})}
+{p(\mathcal{D})}.
+$$
+
+The terms are:
+
+- $p(\boldsymbol{\theta})$: the **prior**, representing uncertainty before seeing the data.
+- $p(\mathcal{D}\mid\boldsymbol{\theta})$: the **likelihood**, describing how probable the data are under each parameter value.
+- $p(\mathcal{D})$: the **evidence**, which normalizes the posterior.
+- $p(\boldsymbol{\theta}\mid\mathcal{D})$: the **posterior**, representing uncertainty after seeing the data.
+
+For continuous parameters, the evidence is an integral:
+
+$$
+p(\mathcal{D})=\int p(\mathcal{D}\mid\boldsymbol{\theta})p(\boldsymbol{\theta})\,d\boldsymbol{\theta}.
+$$
+
+This is the core Bayesian workflow:
+
+1. Start with a prior distribution.
+2. Use the likelihood to connect parameters to data.
+3. Compute or approximate the posterior.
+4. Use the posterior for prediction or decision-making.
+
+### UAV Example: Sensor Bias
+
+Suppose a UAV's barometer has an unknown altitude bias $b$. Before flight, calibration data suggest the bias is probably near zero, so we choose a prior such as:
+
+$$
+b\sim\mathcal{N}(0,\tau_0^2).
+$$
+
+During flight, the UAV compares barometer altitude with another altitude estimate and observes data $\mathcal{D}$. Bayes' rule updates the prior into a posterior $p(b\mid\mathcal{D})$. The autopilot can then correct altitude using the posterior mean and inflate its safety margin using the posterior variance.
 
 ## Gaussian Likelihood and Bayesian Inference
 
