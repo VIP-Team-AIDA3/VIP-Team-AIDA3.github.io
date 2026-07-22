@@ -16,7 +16,7 @@ An image is comprised of a rectangular array of pixels, in which each pixel is a
 
 ## Feature maps
 
-Consider a single unit in the first layer of a CNN that takes in the pixel values from a small patch of the image. We want to learn weight values that detect somem low-level feature present in this area. The output of this unit is comprised of a weighted linear combination of the input with the weights, added with a bias and passed through an activation function:
+Consider a single unit in the first layer of a CNN that takes in the pixel values from a small patch of the image. We want to learn weight values that detect some low-level feature present in this area. The output of this unit is comprised of a weighted linear combination of the input with the weights, added with a bias and passed through an activation function:
 
 $$z = ReLU(w^T x + w_0)$$
 
@@ -58,7 +58,7 @@ When padding, the original image is subtracted by its mean, and then padded with
 
 ## Strides
 
-In practice, filters are usually small compared to the image size ($M << J, K$), meaning the difference in dimensionality between an input image and its feature map is miniscule. In some scenarios, we might want feature maps that are significantly smaller than the input image. To do so, we can use \textit{strided convolutions}, where instead of moving the filter one cell at a time, it is moved in steps of size $S$.
+In practice, filters are usually small compared to the image size ($M << J, K$), meaning the difference in dimensionality between an input image and its feature map is miniscule. In some scenarios, we might want feature maps that are significantly smaller than the input image. To do so, we can use *strided convolutions*, where instead of moving the filter one cell at a time, it is moved in steps of size $S$.
 
 If the same stride is used both horizontally and vertically, the resulting dimensionality will be:
 
@@ -103,7 +103,7 @@ where $A^{(k)}$ is a matrix with the pre-activation units in channel $k$ in the 
 
 This resulting array can be superimposed on the original image, creating a "heat map" as shown below.
 
-![](\figures/saliency.png)
+![](/figures/saliency.png)
 
 ## Object detection
 
