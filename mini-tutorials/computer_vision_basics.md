@@ -103,7 +103,8 @@ where $A^{(k)}$ is a matrix with the pre-activation units in channel $k$ in the 
 
 This resulting array can be superimposed on the original image, creating a "heat map" as shown below.
 
-![](/figures/saliency.png)
+![](figures/saliency.png)
+
 
 ## Object detection
 
