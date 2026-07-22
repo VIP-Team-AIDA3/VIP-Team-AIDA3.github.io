@@ -107,7 +107,7 @@ This resulting array can be superimposed on the original image, creating a "heat
 
 ## Object detection
 
-Consider the case where there are many objects within an image, and we wish to detect the prescence and class of each object. A widely used approach is to use \textit{bounding boxes}, which consists of a rectangle that "bounds" a detected object. The box can be expressed as the coordinates of its centroid along with the width and height in the form of a vector $b = \{b_x, b_y, b_W, b_H\}$. In terms of classification, a fifth feature, the confidence in a class label, is added.
+Consider the case where there are many objects within an image, and we wish to detect the prescence and class of each object. A widely used approach is to use *bounding boxes*, which consists of a rectangle that "bounds" a detected object. The box can be expressed as the coordinates of its centroid along with the width and height in the form of a vector $b = \{b_x, b_y, b_W, b_H\}$. In terms of classification, a fifth feature, the confidence in a class label, is added.
 
 ### Evaluation
 
@@ -120,19 +120,6 @@ As this is a ratio, it lies in the range between $0$ and $1$, where a value clos
 ### Scalar transformations
 
 Alongside looking for objects in different parts of the image, we can also look for objects at different scales and aspect ratios. For example, a cat sitting upright vs lying down would have different aspect ratios. To solve this, we can simply use a fixed input window with multiple copies of the input image at different scales and aspect ratios. Object detection is then employed for each image, and the bounding box is then transformed back into the original image space.
-
-#### SIFT
-
-SIFT is an algorithm that allows for the extraction of key points within an image, regardless of noise factors such as scale, rotation, translation, and illumination.
-
-We first build a scale space using Gaussian blur.
-
-$$L(x, y, \sigma) = G(x, y, \sigma) * I(x, y)$$
-
-where $\sigma$ controls the amount of blur.
-
-We want to take the Laplacian of the Gaussian as the Laplacian is large when there is significant changes in intensity in both the x and y directions (meaning there might be a point of interest at that location). 
-
 
 ### Non-Max Supression
 
