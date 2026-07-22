@@ -30,12 +30,11 @@ $$C(j, k) = \sum_l \sum_m I(j + l, k + m) K(l, m)$$
 
 This of this as a sliding window technique. We are "moving" our filter across the image, with the full multiplication + addition of the elements within the filter and the bounded image being saved into a singular cell in the feature map. The process of convolution is also commonly expressed as $C = I * K$.
 
+![A 3x3 image convolved with a 2x2 filter to give a 2x2 feature map.](figures/convolution.png)
+
 ## Edge detection
 
 Consider the case of detecting an edge from a grey-scale image. We can think of an edge as there being a significant change in local intensity between pixels.
-
-
-
 
 ### Hough Transform
 
@@ -45,13 +44,7 @@ Consider the traditional line equation $y = mx + c$, where $m$ is the slope and 
 
 However, the traditional line equation for a Hough transform is usually not used as it is memory intensive ($-\infty < x, y < \infty$). Libraries usually implement the algorithm using polar coordinates in the form $x cos \theta + y sin \theta = \rho$, where $\rho$ is the norm between the origin and the line, and $\theta$ is the angle between $\rho$ and the horizontal $x$-axis.
 
-
-```{figure} figures/polar-line-hough.png
----
-name: polar-line-hough
-alt: How a point in the xy plane is visualizen in the parameter space.
----
-```
+![Representation of a point in the xy plane in the parameter space.](figures/polar-line-hough.png)
 
 ## Padding
 
@@ -59,7 +52,7 @@ If an image has dimensionality $J * K$ and a convolution is performed with a fil
 
 If $P = 0$, then that is called a \textit{valid convolution}.
 
-When the value of P is such that the output feature map is the same size as the input image ($P = \frac{M - 1}{2}), it is called a \textit{same convolution}.
+When the value of P is such that the output feature map is the same size as the input image ($P = \frac{M - 1}{2}$), it is called a *same convolution*.
 
 When padding, the original image is subtracted by its mean, and then padded with zeros. This way, the padding represents the average value of a cell in the image.
 
@@ -73,7 +66,7 @@ $$\left\lfloor \frac{J + 2P - M}{S} - 1 \right\rfloor * \left\lfloor \frac{K + 2
 
 ## Multi-dimensional convolutions
 
-So far, we have only covered images that are 2D, meaning they are only grey scale. In order to represent multiple colors, we introduce a third dimension $C$, called the \textit{channel}. An image of size $J * K$ with $C$ channels can be represented as a tensor with dimensionality $J * K * C$. For convolution, we introduce a $M * M * C$ filter, which is comprised of one filter per channel.
+So far, we have only covered images that are 2D, meaning they are only grey scale. In order to represent multiple colors, we introduce a third dimension $C$, called the *channel*. An image of size $J * K$ with $C$ channels can be represented as a tensor with dimensionality $J * K * C$. For convolution, we introduce a $M * M * C$ filter, which is comprised of one filter per channel.
 
 To build more flexible models, we can introduce multiple such filters in a convolution layer, allowing each set of filters to detect different features. The filter tensor is now of dimensionality $M * M * C_{in} * C_{out}$, where $C_{out}$ is the number of output channels.
 
@@ -128,7 +121,6 @@ It is very common for the bounding boxes of an object to overlap with each other
 ## References
 
 Szeliski, R. (2022). Computer vision: Algorithms and applications. Springer. https://www.bishopbook.com
-
 
 Hassanein, A. S., Mohammad, S., Sameer, M., & Ragab, M. E. (2015). A survey on Hough transform, theory, techniques and applications. arXiv. https://arxiv.org/abs/1502.02160
 
