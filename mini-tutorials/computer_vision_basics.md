@@ -4,15 +4,15 @@ Many applications of ML models involve structured data, in which input variables
 
 ## Image structure
 
-An image is comprised of a rectangular array of pixels, in which each pixel is assigned a triplet of red, green, and blue channels that are usually represented as 8-bit numbers in the range of $0 \dots 255$. When applying a CNN to an image, it is important to understand four concepts \textit{hierarchy, locality, equivariance}, and \textit{invariance}.
+An image is comprised of a rectangular array of pixels, in which each pixel is assigned a triplet of red, green, and blue channels that are usually represented as 8-bit numbers in the range of $0 \dots 255$. When applying a CNN to an image, it is important to understand four concepts:
 
-\textbf{Hierarchy} - There is a natural hierarchical structure in an image when attempting to detect features. For example, an image might have several faces, each of which have eyes, which have irises, which has edges. The idea that smaller features combine into larger ones dictates hierarchy.
+*Hierarchy* - There is a natural hierarchical structure in an image when attempting to detect features. For example, an image might have several faces, each of which have eyes, which have irises, which has edges. The idea that smaller features combine into larger ones dictates hierarchy.
 
-\textbf{Locality} - In an image, it is more likely for nearby pixels to have a relationship with each other compared to farther pixels. A model would only need to look at a small window of the image in order to detect a feature rather than the entire image itself.
+*Locality* - In an image, it is more likely for nearby pixels to have a relationship with each other compared to farther pixels. A model would only need to look at a small window of the image in order to detect a feature rather than the entire image itself.
 
-\textbf{Equivariance} - Transforming a feature in the image changes the output.
+*Equivariance* - Transforming a feature in the image changes the output. For example, changing the location of a feature in the input image changes the output feature map.
 
-\textbf{Invariance} - Transforming a feature in the image does not change the output.
+*Invariance* - Transforming a feature in the image does not change the output. If an object is of a different scale or rotation, a model should still output the same classification.
 
 ## Feature maps
 
@@ -34,13 +34,21 @@ This of this as a sliding window technique. We are "moving" our filter across th
 
 Consider the case of detecting an edge from a grey-scale image. We can think of an edge as there being a significant change in local intensity between pixels.
 
--- TODO
+
+```{figure} figures/venn-events.png
+---
+name: venn-events
+alt: Venn diagram showing events A and B as overlapping subsets inside a sample space.
+---
+Events are subsets of the sample space. The overlap $A \cap B$ is the event that both $A$ and $B$ occur.
+```
+
 
 ### Hough Transform
 
-Alternatively, we can detect edge and other shapes of a functional form using the Hough transform. Consider a 2D image tensor as a graph, with points of high intensity being points on the graph. We want to find a line that \textit{directly} passes through as many points as possible. This is different from a regression problem as in regression, the optimum we are solving for is determined by minimizing the loss function (sum of squared residuals), whereas in a Hough transform, we want to maximize the amount of points intersected.
+Alternatively, it is possible to detect edges and other shapes of a functional form using the Hough transform. Consider a 2D image tensor as a graph, with points of high intensity being points on the graph. We want to find a line that *directly* passes through as many points as possible. This is different from a regression problem as in regression, the optimum we are solving for is determined by minimizing the loss function (sum of squared residuals), whereas in a Hough transform, we want to maximize the amount of points intersected.
 
-Consider the traditional line equation $y = mx + c$, where $m$ is the slope and $c$ is the y-intercept. Let's create a second space representation in which the dimensions are $m, c$. This will be the \textit{parameter space}, whereas our image is in the \textit{image space}. A point in the image space translates to a line in the parameter space, as it represents all possible combinations $\(m, b\)$ s.t. it passes through that points. When all the points in the image space are translated to the parameter space, the problem reduces to an optimization problem where we need to find the $\(m, b\)$ which the most lines pass through in the parameter space.
+Consider the traditional line equation $y = mx + c$, where $m$ is the slope and $c$ is the y-intercept. Let's create a second space representation in which the dimensions are $m, c$. This will be the *parameter space*, whereas our image is in the *image space*. A point in the image space translates to a line in the parameter space, as it represents all possible combinations $\(m, c\)$ s.t. it passes through that specific point in the image space. When all the points in the image space are translated to the parameter space, the problem then reduces to an optimization problem where we need to find the $\(m, b\)$ which the most lines pass through in the parameter space.
 
 However, the traditional line equation for a Hough transform is usually not used as it is memory intensive ($-\infty < x, y < \infty$). Libraries usually implement the algorithm using polar coordinates in the form $x cos \theta + y sin \theta = \rho$, where $\rho$ is the norm between the origin and the line, and $\theta$ is the angle between $\rho$ and the horizontal $x$-axis.
 
@@ -48,7 +56,7 @@ However, the traditional line equation for a Hough transform is usually not used
 
 ## Padding
 
-If an image has dimensionality $J \cross K$ and a convolution is performed with a filter of size $M \cross M$, we end up with a feature map of size $(J - M + 1) \cross $K - M + 1$. Since a reduction in dimensionality might cause the model to lose some information, we can implement \textit{padding} arount the border of the original image. Padding with $P$ pixels results in a feature map of dimensionality $(J + 2P - M + 1) \cross (K - 2P - M + 1)$.
+If an image has dimensionality $J * K$ and a convolution is performed with a filter of size $M * M$, we end up with a feature map of size $(J - M + 1) * (K - M + 1)$. Since a reduction in dimensionality might cause the model to lose some information, we can implement \textit{padding} arount the border of the original image. Padding with $P$ pixels results in a feature map of dimensionality $(J + 2P - M + 1) * (K - 2P - M + 1)$.
 
 If $P = 0$, then that is called a \textit{valid convolution}.
 
@@ -62,13 +70,13 @@ In practice, filters are usually small compared to the image size ($M << J, K$),
 
 If the same stride is used both horizontally and vertically, the resulting dimensionality will be:
 
-$$\left\lfloor \frac{J + 2P - M}{S} - 1 \right\rfloor \cross \left\lfloor \frac{K + 2P - M}{S} - 1 \right\rfloor$$
+$$\left\lfloor \frac{J + 2P - M}{S} - 1 \right\rfloor * \left\lfloor \frac{K + 2P - M}{S} - 1 \right\rfloor$$
 
 ## Multi-dimensional convolutions
 
-So far, we have only covered images that are 2D, meaning they are only grey scale. In order to represent multiple colors, we introduce a third dimension $C$, called the \textit{channel}. An image of size $J \cross K$ with $C$ channels can be represented as a tensor with dimensionality $J \cross K \cross C$. For convolution, we introduce a $M \cross M \cross C$ filter, which is comprised of one filter per channel.
+So far, we have only covered images that are 2D, meaning they are only grey scale. In order to represent multiple colors, we introduce a third dimension $C$, called the \textit{channel}. An image of size $J * K$ with $C$ channels can be represented as a tensor with dimensionality $J * K * C$. For convolution, we introduce a $M * M * C$ filter, which is comprised of one filter per channel.
 
-To build more flexible models, we can introduce multiple such filters in a convolution layer, allowing each set of filters to detect different features. The filter tensor is now of dimensionality $M \cross M \cross C_{in} \cross C_{out}$, where $C_{out}$ is the number of output channels.
+To build more flexible models, we can introduce multiple such filters in a convolution layer, allowing each set of filters to detect different features. The filter tensor is now of dimensionality $M * M * C_{in} * C_{out}$, where $C_{out}$ is the number of output channels.
 
 ### Pooling
 
@@ -80,20 +88,20 @@ An example of a pooling layer would be \textit{max-pooling}, where each output u
 
 Notice that although this helps in building local translation invariance, pooling can also reduce the dimensionality of an image representation.
 
-As an example of pooling, if we have a feature map with $8$ channels, each of dimensionality $64 \cross 64$, and we apply max-pooling with a filter of size $2 \cross 2$ and a stride of 2, the output will be a tensor of dimensionality $32 \cross 32 \cross 8$,
+As an example of pooling, if we have a feature map with $8$ channels, each of dimensionality $64 * 64$, and we apply max-pooling with a filter of size $2 * 2$ and a stride of 2, the output will be a tensor of dimensionality $32 * 32 * 8$,
 
 
 ## Visualizing CNN outputs
+
+We can visualize the output of a CNN through the use of a *saliency map*, which gives us insight into which regions of an image are most relevant to an object classification.
 
 ## Object detection
 
 Consider the case where there are many objects within an image, and we wish to detect the prescence and class of each object. A widely used approach is to use \textit{bounding boxes}, which consists of a rectangle that "bounds" a detected object. The box can be expressed as the coordinates of its centroid along with the width and height in the form of a vector $b = \{b_x, b_y, b_W, b_H\}$. In terms of classification, a fifth feature, the confidence in a class label, is added.
 
-### Sliding windows
-
 ### Evaluation
 
-To evaluate a model's performance on object detection, a commonly implemented method is \textit{Intersection over Union} (IoU). IoU can be defined as:
+To evaluate a model's performance on object detection, a commonly implemented method is \{Intersection over Union} (IoU). IoU can be defined as:
 
 $$IoU = \frac{\text{Area of Intersection}}{\text{Area of Union}}$$.
 
@@ -108,10 +116,21 @@ Alongside looking for objects in different parts of the image, we can also look 
 
 ### Non-Max Supression
 
+It is very common for the bounding boxes of an object to overlap with each other. When assesing the results, you wouldn't see one clean detection but many candidate bounding boxes for the same object. Non-max supression is a technique that aims to eliminate this overlapping boxes. The techinque is as follows:
+
+- Sort all boxes (this is $O(n log n)$, which can be costly if there are lots of boxes).
+
+- Select the box with the highest confidence score and mark it as a correct prediction. Run IoU with that box against all the other boxes.
+
+- If another box has an IoU over the threshold (say >0.5), then remove that box as it has too much overlap.
+
+- Repeat with the remaining boxes until all boxes have been discarded or all boxes have been classified as a successful detection.
+
 ## References
 
-https://www.bishopbook.com
+Szeliski, R. (2022). Computer vision: Algorithms and applications. Springer. https://www.bishopbook.com
 
-https://arxiv.org/pdf/1502.02160
 
-https://www.cs.ubc.ca/~lowe/papers/iccv99.pdf
+Hassanein, A. S., Mohammad, S., Sameer, M., & Ragab, M. E. (2015). A survey on Hough transform, theory, techniques and applications. arXiv. https://arxiv.org/abs/1502.02160
+
+Lowe, D. G. (1999). Object recognition from local scale-invariant features. Proceedings of the Seventh IEEE International Conference on Computer Vision (ICCV), 1150–1157. https://doi.org/10.1109/ICCV.1999.790410
