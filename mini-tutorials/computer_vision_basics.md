@@ -35,13 +35,6 @@ This of this as a sliding window technique. We are "moving" our filter across th
 Consider the case of detecting an edge from a grey-scale image. We can think of an edge as there being a significant change in local intensity between pixels.
 
 
-```{figure} figures/venn-events.png
----
-name: venn-events
-alt: Venn diagram showing events A and B as overlapping subsets inside a sample space.
----
-Events are subsets of the sample space. The overlap $A \cap B$ is the event that both $A$ and $B$ occur.
-```
 
 
 ### Hough Transform
@@ -52,7 +45,13 @@ Consider the traditional line equation $y = mx + c$, where $m$ is the slope and 
 
 However, the traditional line equation for a Hough transform is usually not used as it is memory intensive ($-\infty < x, y < \infty$). Libraries usually implement the algorithm using polar coordinates in the form $x cos \theta + y sin \theta = \rho$, where $\rho$ is the norm between the origin and the line, and $\theta$ is the angle between $\rho$ and the horizontal $x$-axis.
 
--- insert image here to visualize the coordinate system.
+
+```{figure} figures/polar-line-hough.png
+---
+name: polar-line-hough
+alt: How a point in the xy plane is visualizen in the parameter space.
+---
+```
 
 ## Padding
 
