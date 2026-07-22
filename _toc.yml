@@ -10,6 +10,8 @@ parts:
           - file: mini-tutorials/lecture3a
           - file: mini-tutorials/lecture7a_7b
           - file: signal_temporal_logic_uav
+          - file: mini-tutorials/computer_vision_basics
+
   - caption: Streams
     chapters:
       - file: streams/RL for GNC/description
