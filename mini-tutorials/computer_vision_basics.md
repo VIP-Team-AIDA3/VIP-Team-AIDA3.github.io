@@ -38,7 +38,7 @@ Consider the case of detecting an edge from a grey-scale image. We can think of 
 
 ### Hough Transform
 
-Alternatively, it is possible to detect edges and other shapes of a functional form using the Hough transform. Consider a 2D image tensor as a graph, with points of high intensity being points on the graph. We want to find a line that *directly* passes through as many points as possible. This is different from a regression problem as in regression, the optimum we are solving for is determined by minimizing the loss function (sum of squared residuals), whereas in a Hough transform, we want to maximize the amount of points intersected.
+It is possible to detect edges and other shapes of a functional form using the Hough transform. Consider a 2D image tensor as a graph, with points of high intensity being points on the graph. We want to find a line that *directly* passes through as many points as possible. This is different from a regression problem as in regression, the optimum we are solving for is determined by minimizing the loss function (sum of squared residuals), whereas in a Hough transform, we want to maximize the amount of points intersected.
 
 Consider the traditional line equation $y = mx + c$, where $m$ is the slope and $c$ is the y-intercept. Let's create a second space representation in which the dimensions are $m, c$. This will be the *parameter space*, whereas our image is in the *image space*. A point in the image space translates to a line in the parameter space, as it represents all possible combinations $\(m, c\)$ s.t. it passes through that specific point in the image space. When all the points in the image space are translated to the parameter space, the problem then reduces to an optimization problem where we need to find the $\(m, b\)$ which the most lines pass through in the parameter space.
 
@@ -48,9 +48,9 @@ However, the traditional line equation for a Hough transform is usually not used
 
 ## Padding
 
-If an image has dimensionality $J * K$ and a convolution is performed with a filter of size $M * M$, we end up with a feature map of size $(J - M + 1) * (K - M + 1)$. Since a reduction in dimensionality might cause the model to lose some information, we can implement \textit{padding} arount the border of the original image. Padding with $P$ pixels results in a feature map of dimensionality $(J + 2P - M + 1) * (K - 2P - M + 1)$.
+If an image has dimensionality $J * K$ and a convolution is performed with a filter of size $M * M$, we end up with a feature map of size $(J - M + 1) * (K - M + 1)$. Since a reduction in dimensionality might cause the model to lose some information, we can implement *padding* around the border of the original image. Padding with $P$ pixels results in a feature map of dimensionality $(J + 2P - M + 1) * (K - 2P - M + 1)$.
 
-If $P = 0$, then that is called a \textit{valid convolution}.
+If $P = 0$, then that is called a *valid convolution*.
 
 When the value of P is such that the output feature map is the same size as the input image ($P = \frac{M - 1}{2}$), it is called a *same convolution*.
 
@@ -72,11 +72,11 @@ To build more flexible models, we can introduce multiple such filters in a convo
 
 ### Pooling
 
-A convolutional layer encodes translational equivariance, meaning the outputs of a feature map are directly related to the pixels in the input image regardless of where the pixels are located (if the pixels are moved, the associated outputs of the feature map move alongside it). However, in cases such as classifying an image, we want the output to be invariant to translations of the input. For example, the relative positions of the eyes, nose, and mouth result in a face and not these individual features in random locations. Small translations in these features should not affect the classification (for example, there being different face shapes) and so we want to be invariant to such changes. This can be solved using \textit{pooling}.
+A convolutional layer encodes translational equivariance, meaning the outputs of a feature map are directly related to the pixels in the input image regardless of where the pixels are located (if the pixels are moved, the associated outputs of the feature map move alongside it). However, in cases such as classifying an image, we want the output to be invariant to translations of the input. For example, the relative positions of the eyes, nose, and mouth result in a face and not these individual features in random locations. Small translations in these features should not affect the classification (for example, there being different face shapes) and so we want to be invariant to such changes. This can be solved using *pooling*.
 
 Pooling is similar to convolution in the sense that we have units arranged in a grid format. We can also specify stride and filter size. The difference is that the output of a pooling layer is the result of a simple, fixed function of its inputs, meaning there aren't any learnable weights.
 
-An example of a pooling layer would be \textit{max-pooling}, where each output unit represents the max of all its inputs.
+An example of a pooling layer would be *max-pooling*, where each output unit represents the max of all its inputs.
 
 Notice that although this helps in building local translation invariance, pooling can also reduce the dimensionality of an image representation.
 
@@ -85,7 +85,25 @@ As an example of pooling, if we have a feature map with $8$ channels, each of di
 
 ## Visualizing CNN outputs
 
-We can visualize the output of a CNN through the use of a *saliency map*, which gives us insight into which regions of an image are most relevant to an object classification.
+We can visualize the output of a CNN through the use of a *saliency map*, which gives us insight into which regions of an image are most relevant to an object classification. Saliency maps usually take into account the final layer of a CNN, as it still has some level of spatial localization as well as the highest level of semantic representation.
+
+Denote the output classification score before the activation function as $\alpha^{(c)}$ and the pre-activations in the final convolutional layer as $\alpha_{ij}^{(k)}$. We take the average of the derivatives of these two variables:
+
+$$\alpha_k = \frac{1}{M_k} \sum_i \sum_j \frac{\partial \alpha^{(c)}}{\partial \alpha_{ij}^{(k)}}$$
+
+where $i, j$ are the rows and columns of channel $k$, and $M_k$ is the total number of units in that channel.
+
+The partial derivative tells us how much the output classification score will change by if we change this specific pixel at $i, j$ by a small magnitude. Therefore, a high partial derivative represents that this specific pixel is important to the classification.
+
+We then create a weighted sum of the form:
+
+$$L = \sum_k \alpha_k A^{(k)}$$
+
+where $A^{(k)}$ is a matrix with the pre-activation units in channel $k$ in the final convolutional layer.
+
+This resulting array can be superimposed on the original image, creating a "heat map" as shown below.
+
+![](\figures/saliency.png)
 
 ## Object detection
 
@@ -104,6 +122,16 @@ As this is a ratio, it lies in the range between $0$ and $1$, where a value clos
 Alongside looking for objects in different parts of the image, we can also look for objects at different scales and aspect ratios. For example, a cat sitting upright vs lying down would have different aspect ratios. To solve this, we can simply use a fixed input window with multiple copies of the input image at different scales and aspect ratios. Object detection is then employed for each image, and the bounding box is then transformed back into the original image space.
 
 #### SIFT
+
+SIFT is an algorithm that allows for the extraction of key points within an image, regardless of noise factors such as scale, rotation, translation, and illumination.
+
+We first build a scale space using Gaussian blur.
+
+$$L(x, y, \sigma) = G(x, y, \sigma) * I(x, y)$$
+
+where $\sigma$ controls the amount of blur.
+
+We want to take the Laplacian of the Gaussian as the Laplacian is large when there is significant changes in intensity in both the x and y directions (meaning there might be a point of interest at that location). 
 
 
 ### Non-Max Supression
