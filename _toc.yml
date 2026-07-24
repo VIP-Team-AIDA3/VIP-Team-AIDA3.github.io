@@ -11,7 +11,7 @@ parts:
           - file: mini-tutorials/lecture7a_7b
           - file: signal_temporal_logic_uav
           - file: mini-tutorials/computer_vision_basics
-
+          - file: intro-to-grammar
   - caption: Streams
     chapters:
       - file: streams/RL for GNC/description
