@@ -1,6 +1,4 @@
-# Grammars: From Sentences to the Chomsky Hierarchy
-
-**Mini Tutorial on Grammars**
+# Grammars
 
 You do not need a course in linguistics, compilers, or theory of computation to read this. You need to be willing to think carefully about strings of symbols and the rules that produce them.
 

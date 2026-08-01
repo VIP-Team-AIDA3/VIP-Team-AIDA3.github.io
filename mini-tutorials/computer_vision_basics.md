@@ -1,4 +1,4 @@
-# Mini Tutorial - Computer Vision
+# Basics of Computer Vision
 
 Many applications of ML models involve structured data, in which input variables have relationships with each other. One such application is that of image processing, in which pixels are spatialy correlated. A pattern that is found in one part of an image (such an edge or shape) can appear again anywhere else in the image. Traditional ML methods (such as a SVM) do not consider the relation between the elements of an input dataset's vectors $x = (x_1 \dots x_n)$, meaning a feature must be relearned for every location it appears in. As such, there is motivation for an ML architecture geared towards image processing. Convolutional neural networks (CNNs), which this tutorial will mainly focus on, solve this problem by applying filters that "slide" across an image, allowing for fewer learned parameters as well as feature locality.
 

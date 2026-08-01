@@ -1,4 +1,4 @@
-# Mini-Tutorial 2A - Intro to Neural Networks
+# Basics of Neural Networks
 
 Neural networks are flexible function approximators. They take an input vector, transform it through weighted sums and nonlinear functions, and produce an output used for prediction, classification, control, generation, or decision-making.
 
