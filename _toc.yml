@@ -10,7 +10,6 @@ parts:
           - file: mini-tutorials/lecture3a
           - file: mini-tutorials/lecture7a_7b
           - file: mini-tutorials/signal_temporal_logic_uav
-          - file: mini-tutorials/computer_vision_basics
           - file: mini-tutorials/intro-to-grammar
           - file: mini-tutorials/lecture02a
   - caption: Streams
@@ -24,6 +23,9 @@ parts:
       - file: streams/Classical GNC/description
         sections:
           - file: streams/Classical GNC/teams
+      - file: streams/CV for RunwayDetection/description
+        sections:
+          - file: streams/CV for RunwayDetection/teams
       - file: streams/LLMs for UAVs/description
         sections:
           - file: streams/LLMs for UAVs/teams
