@@ -80,7 +80,7 @@ Here $\theta$ is the unknown you're after, $D$ is the data, $P(\theta)$ is what 
 
 ## Where to read more
 
-For a first pass, the 3Blue1Brown video on Bayes' theorem is about as clear as this material gets, and StatQuest on YouTube covers every term in this lesson at a slower pace.
+For a first pass, the 3Blue1Brown video on Bayes' theorem is about as clear as this material gets, and StatQuest on YouTube covers every term in this lesson at a slower pace. Additionally, Steven Brunton has very helpful videos on YouTube where he walks through examples. 
 
 If you want a book, Richard McElreath's *Statistical Rethinking* is the most approachable serious treatment of Bayesian thinking, and his lecture series is free online. Allen Downey's *Think Bayes* is also free, is built around Python, and stays light on the math. On the frequentist side, Wasserman's *All of Statistics* is a compact reference for looking up what a given test actually does.
 
