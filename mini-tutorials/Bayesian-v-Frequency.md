@@ -67,7 +67,7 @@ Run the same comparison with more data and the disagreement evaporates. If we'd 
 
 A useful mental picture: imagine estimating the true bias $b$ of a pitot-static airspeed sensor from repeated readings taken while the aircraft is held at a known reference airspeed (e.g., in a wind tunnel, on a tow test, or cross-checked against GPS ground speed in still air).
 
-- A **frequentist** says: "$b$ is some fixed number. I don't know it, but it doesn't have a probability distribution — my *measurements* do. I'll compute an estimate $\hat{b}$ and describe how that estimate would vary if I repeated this whole calibration run many times."
+- A **frequentist** says: "$b$ is some fixed number. I don't know it, but it doesn't have a probability distribution — my *measurements* do. I'll compute an estimate $\hat{b}$ and describe how that estimate would vary if I repeated this whole calibration run many times." 
 - A **Bayesian** says: "I have some belief about $b$ before I run the calibration — pitot tubes of this model and installation typically show a bias within about ±1 kt, per the manufacturer's datasheet and prior flight tests. I'll combine that prior belief with today's data to get an updated, more precise belief — a full probability distribution over $b$ itself."
 
 Neither is "wrong." They are different, self-consistent frameworks, and both show up constantly in flight-test and avionics engineering — often on the very same problem, sometimes in the same certification document.
