@@ -12,6 +12,7 @@ parts:
           - file: mini-tutorials/signal_temporal_logic_uav
           - file: mini-tutorials/intro-to-grammar
           - file: mini-tutorials/lecture02a
+          - file: mini-tutorials/physics-1
   - caption: Streams
     chapters:
       - file: streams/RL for GNC/description

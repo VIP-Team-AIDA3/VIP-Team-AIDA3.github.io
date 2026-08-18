@@ -170,19 +170,16 @@ For a point-mass model, the following core assumptions hold:
 The point mass is a model representation of a body where the physical properties like volume, and geometry of the body are neglected. The entire finite mass of the body is assumed to be concentrated at a single, infinitely small spatial point corresponding to the body's Center of Mass (CoM). It is important that this just an approximation, as in reality no body is just a point mass. 
 
 #### 2. Neglected Rotational Dynamics
-Because a mathematical point has no spatial distribution, it possesses no rotational inertia. Consequently, the vehicle's orientation (roll, pitch, yaw) and angular velocity are completely omitted from the state space. The system is treated as having **three translational degrees of freedom (3-DoF)** rather than the full six degrees of freedom (6-DoF) of a true rigid body:
+Because a mathematical point has no spatial distribution, it possesses no rotational inertia. Consequently, the vehicle's orientation and angular velocity are completely omitted. The body is treated as having **three translational degrees of freedom (3-DoF)** rather than the full six degrees of freedom (6-DoF) of a true rigid body:
 
-$$\mathbf{x}_{\text{state}} = \begin{bmatrix} \mathbf{p}^W \\ \mathbf{v}^W \end{bmatrix} \in \mathbb{R}^6 \quad \text{instead of} \quad \begin{bmatrix} \mathbf{p}^W \\ \mathbf{v}^W \\ \boldsymbol{\theta}^W \\ \boldsymbol{\omega}^W \end{bmatrix} \in \mathbb{R}^{12}$$
+$$\mathbf{x}_{\text{state}} = \begin{bmatrix} \mathbf{p}^W \\ \mathbf{v}^W \end{bmatrix} \in \mathbb{R}^6
 
 #### 3. Coincident Forces
-All external forces acting on the vehicle—such as gravity, aerodynamic drag, and motor thrust—are assumed to act simultaneously and directly through this single point. Because the forces have no moment arm relative to the Center of Mass, they produce zero torque ($\boldsymbol{\tau} = \mathbf{0}$):
+All external forces acting on the vehicle—such as gravity or thrust—are assumed to act simultaneously and directly through this single point. Because the forces have no moment arm relative to the Center of Mass, they produce zero torque ($\boldsymbol{\tau} = \mathbf{0}$. 
 
-$$\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F} = \mathbf{0} \times \mathbf{F} = \mathbf{0}$$
+%$$\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F} = \mathbf{0} \times \mathbf{F} = \mathbf{0}$$
 
-### Limitations of the Point-Mass Model
-While this assumption significantly simplifies system identification and control loop design, it comes with strict limitations in autonomous systems:
-* **Underactuation Blindness:** It ignores the lower-level attitude dynamics required to actually produce a net thrust vector (e.g., a quadrotor must pitch forward to move forward, which a point-mass model cannot capture).
-* **Aerodynamic Coupling:** It neglects complex aerodynamic interactions like blade-flap, wind gusts acting on body surfaces, and rotational drag.
+For sure, using such a simplified model has
 
 
 ## Mass-damper
