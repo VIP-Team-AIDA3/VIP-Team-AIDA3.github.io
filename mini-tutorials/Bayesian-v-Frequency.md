@@ -2,6 +2,20 @@
 
 *A hands-on guide to the two dominant philosophies of statistical inference, illustrated with UAV/aircraft sensor and flight-test examples.*
 
+You don't need any stats background for this. Fractions are enough.
+
+## Two ways of thinking about an unknown number
+
+Most of what we care about in this program is something we can't measure directly. How often does the aircraft land inside the box. How trustworthy is the runway detector. Whether the model we fit to yesterday's flight data will hold up tomorrow. In each case we have some data and we want a number that the data doesn't hand us outright.
+
+Statisticians have two traditions for doing this, and they've been arguing about it for roughly a century.
+
+The frequentist tradition says the true value is a fixed number that we happen not to know. Your job is to estimate it from the data you collected, and only from that data.
+
+The Bayesian tradition says you should treat your uncertainty about the number as itself a kind of probability. You start with whatever you believed beforehand, the data comes in, and you update.
+
+The rest of this is working out what that difference does in practice.
+
 ---
 
 ## Table of Contents
@@ -386,23 +400,7 @@ Try these with your own team's UAV/aircraft sensor or flight-test data — repla
 
 
 
-# Bayesian and Frequentist Statistics
 
-*AIDA3 Mini-Tutorial. Draft.*
-
-You don't need any stats background for this. Fractions are enough.
-
-## Two ways of thinking about an unknown number
-
-Most of what we care about in this program is something we can't measure directly. How often does the aircraft land inside the box. How trustworthy is the runway detector. Whether the model we fit to yesterday's flight data will hold up tomorrow. In each case we have some data and we want a number that the data doesn't hand us outright.
-
-Statisticians have two traditions for doing this, and they've been arguing about it for roughly a century.
-
-The frequentist tradition says the true value is a fixed number that we happen not to know. Your job is to estimate it from the data you collected, and only from that data.
-
-The Bayesian tradition says you should treat your uncertainty about the number as itself a kind of probability. You start with whatever you believed beforehand, the data comes in, and you update.
-
-The rest of this is working out what that difference does in practice.
 
 ## Ten landings
 
