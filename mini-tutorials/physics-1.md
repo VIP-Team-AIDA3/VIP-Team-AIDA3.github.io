@@ -20,7 +20,7 @@ Notebook:
 Simulate the three systems.
 Vary m, c, and k. -->
 
-# Tutorial 1 - Foundations: Newton's Law of Motion and Point-Mass Equation
+# Physics refresher 1: Newton's Laws and Point-Mass Motion
 This tutorial provides the foundations for physics-informed machine learning to solve problems related to autonomous systems such as motion-planing, control, system identification, as well as digital twinning. For some of the students, such a refresher on the basics of physics might be helpful to understand the forces that that constitute the dynamics of a drone, an aicraft, or other rigid bodies. We will not cover aerodyanmics or other fields of physics but start with the basics. The basic goal of this tutorial is to answer the following questions:
 
 > How do physical systems move? 
