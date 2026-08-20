@@ -132,12 +132,12 @@ $$\mathbf{a}^W = \frac{d\mathbf{v}^W}{dt} = \frac{d^2\mathbf{p}^W}{dt^2} = \begi
 --- 
 ## Newton's three laws
 
-### Newton's First Law
+#### Newton's First Law
 A body remains at rest or moves at a constant velocity unless acted on by a nonzero net external force. Mathematically, this implies that when the vector sum of forces is zero, the acceleration vector is also zero:
 
 $$\sum_{i} \mathbf{F}_i = \mathbf{0} \implies \mathbf{a} = \mathbf{0}$$
 
-### Newton's Second Law
+#### Newton's Second Law
 The net external force equals the rate of change of linear momentum:
 
 $$\sum_{i} \mathbf{F}_i = \frac{d}{dt}(m\mathbf{v})$$
@@ -152,7 +152,7 @@ $$m\mathbf{a} = m \begin{bmatrix} a_x \\ a_y \\ a_z \end{bmatrix} = \begin{bmatr
 
 This element-wise scaling highlights why Newton's second law is fundamentally a vector equation. Consequently, it serves as the foundational principle for deriving equations of motion in classical mechanics.
 
-### Newton's Third Law
+#### Newton's Third Law
 When body $A$ exerts a force on body $B$, body $B$ exerts an equal and opposite force on body $A$. If $\mathbf{F}_{BA}$ represents the force exerted on body $B$ by body $A$, and $\mathbf{F}_{AB}$ represents the force exerted on body $A$ by body $B$, then:
 
 $$\mathbf{F}_{BA} = -\mathbf{F}_{AB}$$
@@ -172,15 +172,25 @@ The point mass is a model representation of a body where the physical properties
 #### 2. Neglected Rotational Dynamics
 Because a mathematical point has no spatial distribution, it possesses no rotational inertia. Consequently, the vehicle's orientation and angular velocity are completely omitted. The body is treated as having **three translational degrees of freedom (3-DoF)** rather than the full six degrees of freedom (6-DoF) of a true rigid body:
 
-$$\mathbf{x}_{\text{state}} = \begin{bmatrix} \mathbf{p}^W \\ \mathbf{v}^W \end{bmatrix} \in \mathbb{R}^6
+$$\mathbf{x} = \begin{bmatrix} \mathbf{p}^W \\ \mathbf{v}^W \end{bmatrix} \in \mathbb{R}^6
 
 #### 3. Coincident Forces
 All external forces acting on the vehicle—such as gravity or thrust—are assumed to act simultaneously and directly through this single point. Because the forces have no moment arm relative to the Center of Mass, they produce zero torque ($\boldsymbol{\tau} = \mathbf{0}$. 
 
 %$$\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F} = \mathbf{0} \times \mathbf{F} = \mathbf{0}$$
 
-For sure, using such a simplified model has
+For sure, using such a simplified model has limitations. For example, it ignores the affects of the rigid bodies geometries on the forces and moments. Further, it ignores the affect of how the shape of the aircraft's wings create forces through fluid flows. 
 
+## Free-body diagrams
+
+### Deriving equations of motions for simple systems with up to 3-DOF
+
+#### Case 1: Free Mass (Unforced, undamped)
+When a point-mass moves in a vacuum with no external forces acting on it:
+$$\sum F = 0 \implies m\ddot{x} = 0 \implies \ddot{x} = 0$$
+
+Integrating twice with respect to time yields the standard kinematic equations for linear, constant-velocity motion:
+$$v(t) = v_0, \quad x(t) = x_0 + v_0t$$
 
 ## Mass-damper
 
