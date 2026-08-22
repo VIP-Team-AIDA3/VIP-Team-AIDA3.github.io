@@ -20,30 +20,33 @@ Notebook:
 Simulate the three systems.
 Vary m, c, and k. -->
 
-# Physics refresher 1: Newton's Laws and Point-Mass Motion
-This tutorial provides the foundations for physics-informed machine learning to solve problems related to autonomous systems such as motion-planing, control, system identification, as well as digital twinning. For some of the students, such a refresher on the basics of physics might be helpful to understand the forces that that constitute the dynamics of a drone, an aicraft, or other rigid bodies. We will not cover aerodyanmics or other fields of physics but start with the basics. The basic goal of this tutorial is to answer the following questions:
+# From Newton's Laws to Equations of Motion
 
-> How do physical systems move? 
-> How can Newton's Law of Motion help us derive equations of motions, based in simplified assumptions of a "point-mass? 
+This tutorial provides foundational concepts from classical mechanics that are useful for studying autonomous systems, including motion planning, control, system identification, physics-informed machine learning, and digital twins. For students entering these fields from different backgrounds, a refresher on the basic principles of mechanics can be helpful for understanding how the motion of physical systems, such as drones, aircraft, robots, or other bodies, can be modeled mathematically.
+
+We will not cover aerodynamics or detailed rigid-body dynamics here. Instead, we start with the fundamental concepts of motion, forces, and Newton's laws and use them to derive simple equations of motion under the point-mass approximation.
+
+> How do we mathematically describe the motion of physical systems?
+> How can Newton's laws of motion be used to derive equations of motion under a simplified point-mass assumption?
 
 By end of this tutorial you should be able to:
 
-1. Refresh your memory on Newton's three laws of motion. 
-2. Be able to distinguish between the study of kinematics from the study of kinetics, and dynamics (e.g. aerodynamics)
-3. Clarify the assumption of a point-mass and (its limitations)
-4. Derive the equations of motions for a free mass, and family of forced and unforced mass-damper systems
-5. Simulate how different physical parameters effect the stability of a system. 
+1. Recall Newton's three laws of motion.
+2. Distinguish between kinematics, kinetics, and dynamics.
+3. Explain the point-mass approximation and its limitations.
+4. Derive equations of motion for a free mass, a forced mass, a mass–damper system, and a mass–spring–damper system.
+5. Explore through numerical simulation how physical parameters such as mass, damping, and spring stiffness affect the motion of a system (optional).
 
-## Vectors versus scalars
+## Mathematical preliminaries: scalars and vectors
 
 In order to understand equations of motions, it is important that you can distinguish between scalars and vectors, and how we represent them. Vectors are essential in Newton mechanics to derive the equations of motions. The key mathematical distinction is:
 
 $$\text{scalar} \in \mathbb{R} \quad \text{versus} \quad \text{vector} \in \mathbb{R}^n$$
 
-#### 1 A scalar 
-A scalar is a single numerical value. Formally, a real-valued physical quantity x, is expressed as
+#### 1. Scalars
+A scalar is a single numerical value. Formally, a real-valued physical quantity s, is expressed as
 
-$$ x \in \mathcal{R}$$
+$$ s \in \mathbb{R}$$
 
 For example, the mass of an object is a scalar:
 
@@ -58,7 +61,7 @@ $$t \in \mathbb{R}_{\ge0}, \quad T \in \mathbb{R}, \quad v_{\text{speed}} \in \m
 Strictly speaking, physical quantities carry units, so $m = 2 \text{ kg}$ is not literally just the real number $2$. In an introductory treatment, however, it is standard to represent the numerical value of a scalar physical quantity as an element of $\mathbb{R}$, with its unit stated separately.
 
 #### 2. Vectors
-A vector is an element of a vector space. For mechanics, the relevant vector space is usually Euclidean space:
+A vector is an element of a vector space. For the elementary mechanics considered here, vectors are commonly represented as elements of the real vector space $\mathbb{R^n}$. When $\mathbb{R^n}$ is equipped with the standard inner product and its associated norm, it is the familiar n-dimensional Euclidean space. 
 
 $$\mathbf{v} \in \mathbb{R}^n$$
 
@@ -78,7 +81,7 @@ A vector has both a magnitude and a direction. Its Euclidean magnitude is:
 
 $$\|\mathbf{v}\|_2 = \sqrt{v_x^2 + v_y^2 + v_z^2}$$
 
-> Important: The $L_2$ norm $\|\mathbf{v}\|_2$ is a **scalar** rather than a vector and describes the lengths of the vector. 
+> Important: The Euclidean norm $\|\mathbf{v}\|_2$ is a **scalar** rather than a vector and describes the length, or magnitude, of the vector. 
 
 For example, below you see the following vector: 
 
@@ -100,16 +103,22 @@ So keep in mind that some physical quantities are vectors, and thus, have both d
 
 ## Kinematics
 
-Kinematics describes motion without asking what causes it. 
-Please note that kinematics only describes the geometry of motion. It is distinct from dynamics (often split into kinetics and kinematics), laws and theories that seek to relate motion directly to the forces, torques, and masses that cause it. We turn to Newton's law of motions to relate motion to forces after explaining three kinematics concepts of relevance for us: 1. position, 2. velocity, and 3. acceleration. 
+Kinematics describes the motion of an object without considering the forces and moments that cause that motion. It describes quantities such as position, velocity, and acceleration.
+
+Kinematics is one part of dynamics, the branch of mechanics concerned with bodies in motion. Dynamics is commonly divided into:
+
+> Kinematics: How does the object move?
+> Kinetics: What forces and moments cause or change that motion?
+
+We first introduce three fundamental kinematic quantities—position, velocity, and acceleration—before turning to Newton's laws to relate forces to motion.
 
 #### 1. Position
 
-Formally, a **position** is a point in Euclidean space, whereas **displacement** is a vector. Once we choose an origin and a coordinate frame, we represent the position of a point $P$ by its position vector:
+Formally, a **position** is a point in Euclidean space, whereas **displacement** is a vector. We denote the world-fixed reference frame by $mathcal{W}$. Once we choose an origin and a coordinate frame, we represent the position of a point $P$ by its position vector:
 
 $$\mathbf{p}^W = \begin{bmatrix} p_x \\ p_y \\ p_z \end{bmatrix} \in \mathbb{R}^3$$
 
-The superscript $W$ indicates that its coordinates are expressed relative to the world frame $W$. The world frame is related to a fixed point on the earth. We will turn other frames such as body frame or wind frame in a following tutorial. For now, we use the superscript $\mathbb{W}$ to refer to the world frame reference. 
+The superscript $W$ indicates that its coordinates are expressed relative to the world frame $W$. We will turn other frames such as body frame or wind frame in a following tutorial. For now, we use the superscript $\mathbb{W}$ to refer to the world frame reference. All vectors appearing in a vector force balance must be expressed in the same coordinate frame.
 
 Given two positions, $\mathbf{p}_1^W, \mathbf{p}_2^W \in \mathbb{R}^3$, their displacement is:
 
@@ -128,7 +137,7 @@ Acceleration is the time rate of change of velocity, describing how quickly an o
 $$\mathbf{a}^W = \frac{d\mathbf{v}^W}{dt} = \frac{d^2\mathbf{p}^W}{dt^2} = \begin{bmatrix} \dot{v}_x \\ \dot{v}_y \\ \dot{v}_z \end{bmatrix} = \begin{bmatrix} \ddot{p}_x \\ \ddot{p}_y \\ \ddot{p}_z \end{bmatrix} = \begin{bmatrix} a_x \\ a_y \\ a_z \end{bmatrix} \in \mathbb{R}^3$$
 
 
-## Newton's three laws
+## Newton's Three Laws
 
 #### Newton's First Law
 A body remains at rest or moves at a constant velocity unless acted on by a nonzero net external force. Mathematically, this implies that when the vector sum of forces is zero, the acceleration vector is also zero:
@@ -151,15 +160,15 @@ $$m\mathbf{a} = m \begin{bmatrix} a_x \\ a_y \\ a_z \end{bmatrix} = \begin{bmatr
 This element-wise scaling highlights why Newton's second law is fundamentally a vector equation. Consequently, it serves as the foundational principle for deriving equations of motion in classical mechanics.
 
 #### Newton's Third Law
-When body $A$ exerts a force on body $B$, body $B$ exerts an equal and opposite force on body $A$. If $\mathbf{F}_{BA}$ represents the force exerted on body $B$ by body $A$, and $\mathbf{F}_{AB}$ represents the force exerted on body $A$ by body $B$, then:
+When body $A$ exerts a force on body $B$, body $B$ exerts an equal and opposite force on body $A$. If $\mathbf{F}_{B \to A}$ represents the force exerted on body $B$ by body $A$, and $\mathbf{F}_{A \to B}$ represents the force exerted on body $A$ by body $B$, then:
 
-$$\mathbf{F}_{BA} = -\mathbf{F}_{AB}$$
+$$\mathbf{F}_{B \to A} = -\mathbf{F}_{A \to B}$$
 
 This balance ensures that internal forces within a closed system cancel out, conserving total linear momentum.
 
-In summary, Newton's Three Laws are fundamentally based on Newton Mechanics key theoretical foundations: **Forces** and **vectors** describe the state of a system. Lagrangian and Hamiltonian mechanics adopt a different perspective. We will touch upon this in some research projects performed by our team. 
+In Newtonian mechanics, quantities such as position, velocity, acceleration, and force are represented using scalars and vectors. Newton's second law provides the fundamental relationship between the net external force acting on a body and the resulting acceleration. This relationship will now allow us to derive equations of motion for increasingly complex point-mass systems.
 
-## 📐  Key External Forces
+## 📐 External Forces used in this tutorial
 
 There are a couple of forces that are essential for studying autonomous systems. 
 
@@ -170,13 +179,13 @@ $$\mathbf{F}_g^W = \begin{bmatrix} 0 \\ 0 \\ -mg \end{bmatrix} \in \mathbb{R}^3$
 *   **$g \approx 9.81\text{ m/s}^2$:** The acceleration due to gravity.
 
 
-### 3. Drag / Viscous Damping ($\mathbf{F}_d$)
+### 2. Drag / Viscous Damping ($\mathbf{F}_d$)
 Damping represents fluid resistance (e.g. aerodynamic drag) acting against the instantaneous velocity vector of the object. Under low-speed linear assumptions, it scales directly with velocity:
 $$\mathbf{F}_d^W = -c \mathbf{v}^W = -c \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix} \in \mathbb{R}^3$$
 *   **$c \in \mathbb{R}_{>0}$:** The damping coefficient ($\text{N}\cdot\text{s/m}$).
 *   **$\mathbf{v}^W$:** The velocity vector. The negative sign ensures the force is always purely dissipative, directly opposing the direction of travel.
 
-### 4. Restoring Spring Force ($\mathbf{F}_s$)
+### 3. Restoring Spring Force ($\mathbf{F}_s$)
 Spring forces represent physical connections (e.g., landing gear struts) to attract a moving object/vehicle to a desired reference position $\mathbf{p}_{\text{ref}}^W$:
 $$
 \mathbf{F}_s^W = -k (\mathbf{p}^W - \mathbf{p}_{\text{ref}}^W) = -k \Delta\mathbf{p}^W \in \mathbb{R}^3
@@ -207,9 +216,11 @@ All external forces acting on the vehicle—such as gravity or thrust—are assu
 For sure, using such a simplified model has limitations. For example, it ignores the affects of the rigid bodies geometries on the forces and moments. Further, it ignores the affect of how the shape of the aircraft's wings create forces through fluid flows. 
 
 
-# Deriving equations of motions for point mass sytems 
+# Deriving equations of motions for point mass sytems (un-dimensional)
 
-## Free Mass (Unforced, inertial motion)
+After having revisited Newton's Laws, Point Mass assumptions and key force vectors, lets derive equations of motions for simple point-mass systems moving along one-dimension (x-axis). This one-dimensional modeling sets the foundations for more advanced 3-DOF modeling. 
+
+## Free Mass (Unforced, inertial motion, one-dimensional)
 
 When a point-mass moves in a vacuum with no external forces acting on it Newton's First Law holds. Inertia defines the motion. 
 
@@ -335,7 +346,7 @@ $$
 
 Summary of the key terms and physical mechanisms
 
-| Term | Physical role |
+| Term | Physical role/mechanism |
 |---|---|
 | $m\, \ddot p(t)$ | inertial response |
 | $c\,\dot p(t)$ | damping; opposes velocity |
@@ -359,6 +370,17 @@ The important modeling questions are:
 - Is orientation required?
 
 These decisions determine the equation of motion and the fidelity of the resulting simulator.
+
+## Exercise: 
+
+### 1. Exercise: 
+
+Write a script that simulates the behavior of the four systems above, and plot the results. The code below, provides the starting point for the  unforced mass, the forced mass, and the mass-damper. Add the mass-spring-damper, and vary the coefficients (c and k)! 
+
+### 2. Exercise: 
+Extend the forced mass, and the force mass-damper motion to the 2-D case? 
+
+
 
 
 ## Quiz
