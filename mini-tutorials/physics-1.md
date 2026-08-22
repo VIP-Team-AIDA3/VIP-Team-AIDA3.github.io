@@ -237,12 +237,20 @@ The velocity vector remains completely constant over time. The mass experiences 
 
 We find the position vector by substituting the constant velocity vector into the position derivative equation and integrating:
 
-$$ \frac{d}{dt} \mathbf{p}(t) = \mathbf{v}_0 $$
-$$ \int_{0}^{t} \frac{d}{d\tau} \mathbf{p}(\tau) \, d\tau = \int_{0}^{t} \mathbf{v}_0 \, d\tau $$
+$$ 
+\frac{d}{dt} \mathbf{p}(t) = \mathbf{v}_0
+$$
+$$ 
+\int_{0}^{t} \frac{d}{d\tau} \mathbf{p}(\tau) \, d\tau = \int_{0}^{t} \mathbf{v}_0 \, d\tau
+$$
 
 Because $\mathbf{v}_0$ is a constant vector, it pulls out of the integral operator:
-$$ \mathbf{p}(t) - \mathbf{p}_0 = \mathbf{v}_0 \int_{0}^{t} d\tau $$
-$$ \mathbf{p}(t) = \mathbf{p}_0 + \mathbf{v}_0 t $$
+$$ 
+\mathbf{p}(t) - \mathbf{p}_0 = \mathbf{v}_0 \int_{0}^{t} d\tau 
+$$
+$$ 
+\mathbf{p}(t) = \mathbf{p}_0 + \mathbf{v}_0 t
+$$
 
 ## Forced motion restricted to one dimension
 
