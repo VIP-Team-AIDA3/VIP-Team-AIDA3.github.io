@@ -173,25 +173,28 @@ In Newtonian mechanics, quantities such as position, velocity, acceleration, and
 There are a couple of forces that are essential for studying autonomous systems. 
 
 ### 1. Gravity ($\mathbf{F}_g$)
-Gravity is a constant field force acting downward along the negative vertical axis (typically the $z$-axis in aviation coordinate systems; we will get  back to this in another tutorial).
+Gravity is a constant field force acting downward along the negative vertical axis (typically the $z$-axis in aviation coordinate systems; we will get  back to this in another tutorial). Assuming a world frame W whose z-axis points upward, the equation is: 
 $$\mathbf{F}_g^W = \begin{bmatrix} 0 \\ 0 \\ -mg \end{bmatrix} \in \mathbb{R}^3$$
+with 
 *   **$m \in \mathbb{R}_{>0}$:** The scalar mass of the vehicle ($\text{kg}$).
 *   **$g \approx 9.81\text{ m/s}^2$:** The acceleration due to gravity.
 
 
 ### 2. Drag / Viscous Damping ($\mathbf{F}_d$)
-Damping represents fluid resistance (e.g. aerodynamic drag) acting against the instantaneous velocity vector of the object. Under low-speed linear assumptions, it scales directly with velocity:
+A viscous damper is an idealized dissipative mechanical element that produces a force proportional to the relative velocity across the damper and opposite to that relative motion. For a damper connected to a fixed reference, a simple linear model is
 $$\mathbf{F}_d^W = -c \mathbf{v}^W = -c \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix} \in \mathbb{R}^3$$
 *   **$c \in \mathbb{R}_{>0}$:** The damping coefficient ($\text{N}\cdot\text{s/m}$).
 *   **$\mathbf{v}^W$:** The velocity vector. The negative sign ensures the force is always purely dissipative, directly opposing the direction of travel.
 
+This linear damping model is useful for illustrating dissipative forces. It should not generally be confused with aerodynamic drag, which often depends nonlinearly on relative airspeed. We will turn to this in a later tutorial. 
+
 ### 3. Restoring Spring Force ($\mathbf{F}_s$)
-Spring forces represent physical connections (e.g., landing gear struts) to attract a moving object/vehicle to a desired reference position $\mathbf{p}_{\text{ref}}^W$:
+A linear spring produces a restoring force that acts toward its equilibrium configuration were the objecti is positioned at $\mathbf{p}_{\text{ref}}^W$:
 $$
 \mathbf{F}_s^W = -k (\mathbf{p}^W - \mathbf{p}_{\text{ref}}^W) = -k \Delta\mathbf{p}^W \in \mathbb{R}^3
 $$ 
 *   **$k \in \mathbb{R}_{>0}$:** The spring stiffness constant ($\text{N/m}$).
-*   **$\mathbf{p}^W$:** The current position vector of the center of mass, and $\Delta\mathbf{p}^W$  describing the displacement of the point mass/vehicle. 
+*   **$\mathbf{p}^W$:** The current position vector of the center of mass, and $\Delta\mathbf{p}^W$  describing the displacement of the object. 
 
 ## Point mass assumptions
 In many areas of research for autonomous aviation (such as high-level trajectory generation and global motion-planning), it is often sufficient to represent a complex vehicle like a quadrotor or fixed-wing aircraft as a simplified **point-mass** (or particle) to derive its translational equations of motion. 
@@ -202,25 +205,25 @@ For a point-mass model, the following core assumptions hold:
 The point mass is a model representation of a body where the physical properties like volume, and geometry of the body are neglected. The entire finite mass of the body is assumed to be concentrated at a single, infinitely small spatial point corresponding to the body's Center of Mass (CoM). It is important that this just an approximation, as in reality no body is just a point mass. 
 
 #### 2. Neglected Rotational Dynamics
-Because a mathematical point has no spatial distribution, it possesses no rotational inertia. Consequently, the vehicle's orientation and angular velocity are completely omitted. The body is treated as having **three translational degrees of freedom (3-DoF)** rather than the full six degrees of freedom (6-DoF) of a true rigid body:
+Because a mathematical point has no spatial distribution, it possesses no rotational inertia. Consequently, the vehicle's orientation and angular velocity are completely omitted. The body is treated as having **three translational degrees of freedom (3-DoF)** rather than the full six degrees of freedom (6-DoF) of a true rigid body. 
 
-$$
-\mathbf{x} = \begin{bmatrix} \mathbf{p}^W \\ \mathbf{v}^W \end{bmatrix} \in \mathbb{R}^6
-$$
+The translational motion can thus, be described by the bodies position $ \mathbf{p(t)} \in \mathbb{R^3}$ and $\mathbf{v(t)} \in \mathbb{R}^3$. 
+
+In a future tutorial, you will learn how these two states can be combined in a single state vector. 
 
 #### 3. Coincident Forces
-All external forces acting on the vehicle—such as gravity or thrust—are assumed to act simultaneously and directly through this single point. Because the forces have no moment arm relative to the Center of Mass, they produce zero torque ($\boldsymbol{\tau} = \mathbf{0}$). 
+In a point-mass model, rotational effects are neglected. External forces are therefore represented by their resultant force acting through the modeled point, and moments or torques are not modeled explicitly. Because the forces have no moment arm relative to the Center of Mass, they produce zero torque ($\boldsymbol{\tau} = \mathbf{0}$). 
 
 %$$\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F} = \mathbf{0} \times \mathbf{F} = \mathbf{0}$$
 
 For sure, using such a simplified model has limitations. For example, it ignores the affects of the rigid bodies geometries on the forces and moments. Further, it ignores the affect of how the shape of the aircraft's wings create forces through fluid flows. 
 
 
-# Deriving equations of motions for point mass sytems (un-dimensional)
+# Deriving equations of motions for point mass sytems
 
-After having revisited Newton's Laws, Point Mass assumptions and key force vectors, lets derive equations of motions for simple point-mass systems moving along one-dimension (x-axis). This one-dimensional modeling sets the foundations for more advanced 3-DOF modeling. 
+After having revisited Newton's Laws, Point Mass assumptions and key force vectors, lets derive equations of motions for simple point-mass systems.  
 
-## Free Mass (Unforced, inertial motion, one-dimensional)
+## Example: Free Mass (Unforced, inertial motion, one-dimensional)
 
 When a point-mass moves in a vacuum with no external forces acting on it Newton's First Law holds. Inertia defines the motion. 
 
@@ -246,24 +249,39 @@ Because $\mathbf{v}_0$ is a constant vector, it pulls out of the integral operat
 $$ \mathbf{p}(t) - \mathbf{p}_0 = \mathbf{v}_0 \int_{0}^{t} d\tau $$
 $$ \mathbf{p}(t) = \mathbf{p}_0 + \mathbf{v}_0 t $$
 
+### Restricting motion to one dimension
+
+To introduce applied forces, damping, and spring forces without unnecessary geometric complexity, we now restrict the point mass to motion along a single axis. 
+We denote its scalar position along this axis by
+
+$ q(t) \in \mathbb{R}$ and
+
+its velocity and its acceleration are there for
+
+$ \dot q(t) \in \mathbb{R} \quad \text{and} \quad \ddot q(t)\in \mathbb{R}$ 
+
+respectively. Thus, the following sections will drop vector notation. 
+
+This one-dimensional modeling sets the foundations for more advanced 3-DOF modeling. 
+
 
 #### Free Mass (Forced, one-dimensional motion)
 Next, we can imagine a mass being forced with a force $\mathbf{u}$ along the horizontal axis x, defined as
 $$
-\mathbf{F_u(t)} = \mathbf{u(t)} = \begin{bmatrix} u_x(t) \\ 0 \\ 0 \end{bmatrix} \in \mathbb{R}^3
+F_u(t) = u(t)
 $$ 
 We will omit for simplicity moving forward. 
 
 Then, Newton's second law gives
 
 $$
-m\,\ddot{\mathbf{p}}(t)=\mathbf{u(t)}.
+m\,\ddot{q}(t)=u(t).
 $$
 
 Therefore,
 
 $$
-\boxed{\ddot p(t)=\frac{1}{m}u(t).}
+\boxed{\ddot q(t)=\frac{1}{m}u(t).}
 $$
 
 ![Free point mass](figures/free_mass.png)
@@ -275,7 +293,7 @@ A viscous damper produces a force proportional to relative velocity and opposite
 Using the definition of a damping force (see above), and focusing on horizontal motion only, this leads to  
 
 $$
-\mathbf{F_d(t)} = -c\dot{\mathbf{p}}(t) = -c \mathbf{v}(t) = -c \begin{bmatrix} v_x(t) \\ 0 \\ 0 \end{bmatrix} \in \mathbb{R}^3
+F_d(t) = -c\dot{q}(t) 
 $$. 
 
 
@@ -284,19 +302,19 @@ where \(c>0\) is the damping coefficient.
 Thus, based on Newton's second law the horizontal force balance is
 
 $$\
-\mathbf{u}(t)-c\dot{\mathbf{p}}(t)=m\ddot{\mathbf{p}}(t).
+u(t)-c\dot{q}(t)=m\ddot{q}(t).
 $$
 
 Rearranging and dropping the vector notation due to the one-dimensional motion, this leads to
 
 $$
-\boxed{m\ddot p(t)+c\dot p(t)=u(t)}
+\boxed{m\ddot q(t)+c\dot q(t)=u(t)}
 $$
 
 or
 
 $$
-\boxed{\ddot p(t)=-\frac{c}{m}\dot p(t)+\frac{1}{m}u(t)}
+\boxed{\ddot q(t)=-\frac{c}{m}\dot q(t)+\frac{1}{m}u(t)}
 $$
 
 ![Mass–damper system](figures/mass_damper.png)
@@ -317,40 +335,40 @@ The forces are
 
 $$
 F_u=u(t),\qquad
-F_d=-c\dot p(t),\qquad
+F_d=-c\dot q(t),\qquad
 F_s=-kq(t).
 $$
 
 Applying Newton's second law,
 
 $$
-u(t)-c\dot p(t)-kp(t)=m\ddot q(t).
+u(t)-c\dot q(t)-kq(t)=m\ddot q(t).
 $$
 
 Thus,
 $$
-\boxed{m\ddot p(t)+c\dot p(t)+kp(t)=u(t).}
+\boxed{m\ddot q(t)+c\dot q(t)+kp(t)=u(t).}
 $$
 
 or
 
 $$
 \boxed{
-\ddot p(t)
+\ddot q(t)
 =
--\frac{k}{m}p(t)
--\frac{c}{m}\dot p(t)
+-\frac{k}{m}q(t)
+-\frac{c}{m}\dot q(t)
 +\frac{1}{m}u(t).
 }
 $$
 
-Summary of the key terms and physical mechanisms
+Summary of the key terms and physical meaning
 
-| Term | Physical role/mechanism |
+| Term | Physical meaning |
 |---|---|
-| $m\, \ddot p(t)$ | inertial response |
-| $c\,\dot p(t)$ | damping; opposes velocity |
-| $k\,p(t)$ | restoring effect; opposes displacement |
+| $m\, \ddot q(t)$ | inertial response |
+| $c\,\dot q(t)$ | damping; opposes velocity |
+| $k\,q(t)$ | restoring effect; opposes displacement |
 | $u\,(t)$ | externally applied force |
 
 ## Connection to autonomous systems
