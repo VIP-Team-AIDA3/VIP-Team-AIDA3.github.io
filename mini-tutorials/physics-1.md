@@ -180,7 +180,7 @@ with
 *   **$g \approx 9.81\text{ m/s}^2$:** The acceleration due to gravity.
 
 
-### 2. Drag / Viscous Damping ($\mathbf{F}_d$)
+### 2. Viscous Damping ($\mathbf{F}_d$)
 A viscous damper is an idealized dissipative mechanical element that produces a force proportional to the relative velocity across the damper and opposite to that relative motion. For a damper connected to a fixed reference, a simple linear model is
 $$\mathbf{F}_d^W = -c \mathbf{v}^W = -c \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix} \in \mathbb{R}^3$$
 *   **$c \in \mathbb{R}_{>0}$:** The damping coefficient ($\text{N}\cdot\text{s/m}$).
@@ -189,12 +189,7 @@ $$\mathbf{F}_d^W = -c \mathbf{v}^W = -c \begin{bmatrix} v_x \\ v_y \\ v_z \end{b
 This linear damping model is useful for illustrating dissipative forces. It should not generally be confused with aerodynamic drag, which often depends nonlinearly on relative airspeed. We will turn to this in a later tutorial. 
 
 ### 3. Restoring Spring Force ($\mathbf{F}_s$)
-A linear spring produces a restoring force that acts toward its equilibrium configuration were the objecti is positioned at $\mathbf{p}_{\text{ref}}^W$:
-$$
-\mathbf{F}_s^W = -k (\mathbf{p}^W - \mathbf{p}_{\text{ref}}^W) = -k \Delta\mathbf{p}^W \in \mathbb{R}^3
-$$ 
-*   **$k \in \mathbb{R}_{>0}$:** The spring stiffness constant ($\text{N/m}$).
-*   **$\mathbf{p}^W$:** The current position vector of the center of mass, and $\Delta\mathbf{p}^W$  describing the displacement of the object. 
+A **spring** is an elastic mechanical element that produces a restoring force when it is stretched or compressed away from its equilibrium configuration. For an ideal linear spring, the restoring force is described by **Hooke's law**. We will introduce Hooke's law formally when we derive the one-dimensional mass–spring–damper system below.
 
 ## Point mass assumptions
 In many areas of research for autonomous aviation (such as high-level trajectory generation and global motion-planning), it is often sufficient to represent a complex vehicle like a quadrotor or fixed-wing aircraft as a simplified **point-mass** (or particle) to derive its translational equations of motion. 
@@ -214,7 +209,7 @@ In a future tutorial, you will learn how these two states can be combined in a s
 #### 3. Coincident Forces
 In a point-mass model, rotational effects are neglected. External forces are therefore represented by their resultant force acting through the modeled point, and moments or torques are not modeled explicitly. Because the forces have no moment arm relative to the Center of Mass, they produce zero torque ($\boldsymbol{\tau} = \mathbf{0}$). 
 
-%$$\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F} = \mathbf{0} \times \mathbf{F} = \mathbf{0}$$
+$$\boldsymbol{\tau} = \mathbf{r} \times \mathbf{F} = \mathbf{0} \times \mathbf{F} = \mathbf{0}$$
 
 For sure, using such a simplified model has limitations. For example, it ignores the affects of the rigid bodies geometries on the forces and moments. Further, it ignores the affect of how the shape of the aircraft's wings create forces through fluid flows. 
 
@@ -223,7 +218,7 @@ For sure, using such a simplified model has limitations. For example, it ignores
 
 After having revisited Newton's Laws, Point Mass assumptions and key force vectors, lets derive equations of motions for simple point-mass systems.  
 
-## Example: Free Mass (Unforced, inertial motion, one-dimensional)
+### Example: Free Mass in Three Dimensions
 
 When a point-mass moves in a vacuum with no external forces acting on it Newton's First Law holds. Inertia defines the motion. 
 
@@ -249,28 +244,27 @@ Because $\mathbf{v}_0$ is a constant vector, it pulls out of the integral operat
 $$ \mathbf{p}(t) - \mathbf{p}_0 = \mathbf{v}_0 \int_{0}^{t} d\tau $$
 $$ \mathbf{p}(t) = \mathbf{p}_0 + \mathbf{v}_0 t $$
 
-### Restricting motion to one dimension
+## Forced motion restricted to one dimension
 
 To introduce applied forces, damping, and spring forces without unnecessary geometric complexity, we now restrict the point mass to motion along a single axis. 
 We denote its scalar position along this axis by
 
 $ q(t) \in \mathbb{R}$ and
 
-its velocity and its acceleration are there for
+its velocity and its acceleration are therefore
 
 $ \dot q(t) \in \mathbb{R} \quad \text{and} \quad \ddot q(t)\in \mathbb{R}$ 
 
 respectively. Thus, the following sections will drop vector notation. 
 
-This one-dimensional modeling sets the foundations for more advanced 3-DOF modeling. 
+This one-dimensional modeling sets the foundations for more advanced 3-D modeling. 
 
 
-#### Free Mass (Forced, one-dimensional motion)
-Next, we can imagine a mass being forced with a force $\mathbf{u}$ along the horizontal axis x, defined as
+### 1. Forced Free Mass 
+Next, we can imagine a mass being forced with a force $\mathbf{u}$ defined as
 $$
 F_u(t) = u(t)
 $$ 
-We will omit for simplicity moving forward. 
 
 Then, Newton's second law gives
 
@@ -284,9 +278,9 @@ $$
 \boxed{\ddot q(t)=\frac{1}{m}u(t).}
 $$
 
-![Free point mass](figures/free_mass.png)
+![Free point mass](figures/forced-free-mass.png)
 
-## Mass-damper (Forced, damped, one-dimensional motion)
+### 2. Forced Mass-Damper
 
 A viscous damper produces a force proportional to relative velocity and opposite to motion. 
 
@@ -305,7 +299,7 @@ $$\
 u(t)-c\dot{q}(t)=m\ddot{q}(t).
 $$
 
-Rearranging and dropping the vector notation due to the one-dimensional motion, this leads to
+Rearranging this leads to
 
 $$
 \boxed{m\ddot q(t)+c\dot q(t)=u(t)}
@@ -317,21 +311,47 @@ $$
 \boxed{\ddot q(t)=-\frac{c}{m}\dot q(t)+\frac{1}{m}u(t)}
 $$
 
-![Mass–damper system](figures/mass_damper.png)
+![Mass–damper system](figures/mass-damper.png)
 
 >Interpretation: The damper resists velocity, not position. If the applied force is removed, the mass slows down and eventually stops, but it is not pulled back to its starting point.
 
-## Mass-spring-damper
+### 3. Forced Mass-Spring-Damper
 
-A linear spring exerts the restoring force
+
+We now add a linear spring to the mass-damper. Before deriving the resulting equation of motion, we first introduce Hooke's law, which describes the force generated by an ideal linear spring.
+
+Consider a spring attached to a fixed wall at one end and to the point mass at the other. The spring has an equilibrium position, at which it is neither stretched nor compressed. We choose this equilibrium position as
 
 $$
-F_s(t)=-kp(t),
+q(0) = 0.
+$$ 
+
+If the mass is displaced from equilibrium, the spring produces a force that acts in the direction opposite to the displacement. This relationship is described by Hooke's law: 
+
+$$
+F_s(t)=-kq(t),
 $$
 
-where \(k>0\) is the spring stiffness and \(q=0\) is the equilibrium position.
+where 
+* $F_s(t)$ is the spring force in newtons (N),
+* $k>0$ is the spring stiffness is the spring stiffness in (N/m),
+* and $q(t)$ is the displacement of the mass from the spring's equilibrium position in meters (m).
 
-The forces are
+The negative sign is important. It indicates that the spring force acts in the direction opposite to the displacement. The spring therefore attempts to restore the mass to its equilibrium position.
+
+If $q(t)$ > 0, than $F_s(t) < 0$ and the spring is pulling the body backwards towards the equilibrium position  q(0) = 0. 
+
+However, if $q(t)$ < 0 than $F_s(t) > 0$ and the spring pushes the body towards the equilibrium position  q(0) = 0. 
+
+What is important is that in both cases, the spring pushes the body towards the equilibrium. 
+What is important is that q(t) is not the absolute position but the position relative to the equilibrium q(0) = 0. If the absolute coordinate where x(t), and the spring equilibrium would be $x(t)_{eq}$, than Hooke's law becomes 
+
+$$
+F_s(t)=-k [x(t) - x_{eq}],
+$$
+
+
+There are three forces that help us to derive the equations of motion, namely the (1) damping, (2) the spring force, and in addition (3) the external applied force: 
 
 $$
 F_u=u(t),\qquad
@@ -347,10 +367,10 @@ $$
 
 Thus,
 $$
-\boxed{m\ddot q(t)+c\dot q(t)+kp(t)=u(t).}
+\boxed{m\ddot q(t)+c\dot q(t)+kq(t)=u(t).}
 $$
 
-or
+or rearranging gives us: 
 
 $$
 \boxed{
@@ -361,6 +381,8 @@ $$
 +\frac{1}{m}u(t).
 }
 $$
+
+![Mass–spring-damper system](figures/mass-spring-damper.png)
 
 Summary of the key terms and physical meaning
 
@@ -375,9 +397,9 @@ Summary of the key terms and physical meaning
 
 A simplified vehicle model also begins with
 
-$
-m\ddot p=F_{\text{net}}.
-$
+$$
+m\ddot{\mathbf{p}}^W(t)=\mathbf{F}^W_{net}(t).
+$$
 
 The important modeling questions are:
 
@@ -393,10 +415,10 @@ These decisions determine the equation of motion and the fidelity of the resulti
 
 ### 1. Exercise: 
 
-Write a script that simulates the behavior of the four systems above, and plot the results. The code below, provides the starting point for the  unforced mass, the forced mass, and the mass-damper. Add the mass-spring-damper, and vary the coefficients (c and k)! 
+Write a script that simulates the behavior of the four systems above, and plot the results. Start with the forced mass, and the mass-damper assuming one-dimensional motion, and vary the coefficients (c and m) and the external force u! The also add the mass-spring-damper and vary c,k,m and also u! What do you learn? 
 
 ### 2. Exercise: 
-Extend the forced mass, and the force mass-damper motion to the 2-D case? 
+Extend the forced mass, and the force mass-damper motion to the 2-D case. Start with deriving the equations of motions using vector notation. 
 
 
 
@@ -412,21 +434,21 @@ What information is neglected when a rigid object is modeled as a point mass?
 Why is the damping force written as
 
 $
-F_d=-c\dot p?
+F_d=-c\dot q?
 $
 
 ### 3. Question 3
 
-A mass–damper system is released with nonzero velocity and no applied force. Does it return to $p(T)=0$ at time t=T, where $v(T)=0$?
+A mass–damper system is released with nonzero velocity and no applied force. As $t\to\infty$, its velocity approaches zero. Does its position necessarily return to its initial position? Explain! 
 
 
 ### 4. Question 4
 
 Starting from the force balance
 
-$
-u-c\dot p-kp=m\ddot p,
-$
+$$
+u -c\dot q -kq=m \ddot q
+$$
 
 rewrite as unforced mass-spring-damper with $u=0$. 
 
