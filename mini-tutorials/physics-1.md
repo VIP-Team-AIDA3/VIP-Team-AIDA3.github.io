@@ -298,7 +298,8 @@ Using the definition of a damping force (see above), and focusing on horizontal 
 
 $$
 F_d(t) = -c\dot{q}(t) 
-$$. 
+$$
+
 
 
 where c>0 is the damping coefficient.
