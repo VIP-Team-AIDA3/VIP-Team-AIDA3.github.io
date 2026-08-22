@@ -297,7 +297,7 @@ $$
 A linear spring exerts the restoring force
 
 $$
-F_s(t)=-kq(t),
+F_s(t)=-kp(t),
 $$
 
 where \(k>0\) is the spring stiffness and \(q=0\) is the equilibrium position.
@@ -333,12 +333,68 @@ $$
 }
 $$
 
-![Mass–spring–damper system](figures/mass_spring_damper.png)
-## Deriving the equations of motions
+Summary of the key terms and physical mechanisms
+
+| Term | Physical role |
+|---|---|
+| $m\, \ddot p(t)$ | inertial response |
+| $c\,\dot p(t)$ | damping; opposes velocity |
+| $k\,p(t)$ | restoring effect; opposes displacement |
+| $u\,(t)$ | externally applied force |
+
+## Connection to autonomous systems
+
+A simplified vehicle model also begins with
+
+$
+m\ddot p=F_{\text{net}}.
+$
+
+The important modeling questions are:
+
+- Which forces matter for the task?
+- Which effects can be neglected?
+- Is a point-mass model sufficient?
+- Is motion one-dimensional, planar, or three-dimensional?
+- Is orientation required?
+
+These decisions determine the equation of motion and the fidelity of the resulting simulator.
+
+
+## Quiz
+
+### 1. Question 1
+
+What information is neglected when a rigid object is modeled as a point mass?
+
+### 2. Question 2
+
+Why is the damping force written as
+
+$
+F_d=-c\dot p?
+$
+
+### 3. Question 3
+
+A mass–damper system is released with nonzero velocity and no applied force. Does it return to $p(T)=0$ at time t=T, where $v(T)=0$?
+
+
+### 4. Question 4
+
+Starting from the force balance
+
+$
+u-c\dot p-kp=m\ddot p,
+$
+
+rewrite as unforced mass-spring-damper with $u=0$. 
+
 
 ## References
 
-Roth, S., and Stahl, A. 2025. “Kinematics of the Point Mass,” in Mechanics: Experimental Physics - Descriptively Explained, S. Roth and A. Stahl (eds.), Berlin, Heidelberg: Springer, pp. 47–79. (https://doi.org/10.1007/978-3-662-68079-7_5).
+Åström, K. J., and Murray, R. M. (2008). *Feedback Systems: An Introduction for Scientists and Engineers*. Princeton University Press.
+Roth, S., and Stahl, A. 2025. *Kinematics of the Point Mass,* in Mechanics: Experimental Physics - Descriptively Explained, S. Roth and A. Stahl (eds.), Berlin, Heidelberg: Springer, pp. 47–79. (https://doi.org/10.1007/978-3-662-68079-7_5).
 
 
 
