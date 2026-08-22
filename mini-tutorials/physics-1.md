@@ -245,9 +245,11 @@ $$
 $$
 
 Because $\mathbf{v}_0$ is a constant vector, it pulls out of the integral operator:
+
 $$ 
 \mathbf{p}(t) - \mathbf{p}_0 = \mathbf{v}_0 \int_{0}^{t} d\tau 
 $$
+
 $$ 
 \mathbf{p}(t) = \mathbf{p}_0 + \mathbf{v}_0 t
 $$
@@ -277,7 +279,7 @@ $$
 Then, Newton's second law gives
 
 $$
-m\,\ddot{q}(t)=u(t).
+m \ddot{q}(t)=u(t).
 $$
 
 Therefore,
@@ -299,11 +301,11 @@ F_d(t) = -c\dot{q}(t)
 $$. 
 
 
-where \(c>0\) is the damping coefficient.
+where c>0 is the damping coefficient.
 
 Thus, based on Newton's second law the horizontal force balance is
 
-$$\
+$$
 u(t)-c\dot{q}(t)=m\ddot{q}(t).
 $$
 
