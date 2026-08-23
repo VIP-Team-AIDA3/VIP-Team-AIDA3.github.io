@@ -41,7 +41,9 @@ By end of this tutorial you should be able to:
 
 In order to understand equations of motions, it is important that you can distinguish between scalars and vectors, and how we represent them. Vectors are essential in Newton mechanics to derive the equations of motions. The key mathematical distinction is:
 
-$$\text{scalar} \in \mathbb{R} \quad \text{versus} \quad \text{vector} \in \mathbb{R}^n$$
+$$
+\text{scalar} \in \mathbb{R} \quad \text{versus} \quad \text{vector} \in \mathbb{R}^n
+$$
 
 #### 1. Scalars
 A scalar is a single numerical value. Formally, a real-valued physical quantity s, is expressed as
@@ -67,7 +69,7 @@ $$\mathbf{v} \in \mathbb{R}^n$$
 
 For three-dimensional motion:
 
-$$\mathbf{v} \in \mathbb{R}^3$$
+$$\mathbf{v} \in \mathbb{R^3}$$
 
 It can be represented in Cartesian coordinates as:
 
@@ -114,11 +116,11 @@ We first introduce three fundamental kinematic quantities—position, velocity, 
 
 #### 1. Position
 
-Formally, a **position** is a point in Euclidean space, whereas **displacement** is a vector. We denote the world-fixed reference frame by $mathcal{W}$. Once we choose an origin and a coordinate frame, we represent the position of a point $P$ by its position vector:
+Formally, a **position** is a point in Euclidean space, whereas **displacement** is a vector. We denote the world-fixed reference frame by $\mathcal{W}$. Once we choose an origin and a coordinate frame, we represent the position of a point $P$ by its position vector:
 
 $$\mathbf{p}^W = \begin{bmatrix} p_x \\ p_y \\ p_z \end{bmatrix} \in \mathbb{R}^3$$
 
-The superscript $W$ indicates that its coordinates are expressed relative to the world frame $W$. We will turn other frames such as body frame or wind frame in a following tutorial. For now, we use the superscript $\mathbb{W}$ to refer to the world frame reference. All vectors appearing in a vector force balance must be expressed in the same coordinate frame.
+The superscript $W$ indicates that its coordinates are expressed relative to the world frame $W$. We will turn other frames such as body frame or wind frame in a following tutorial. For now, we use the superscript $\mathcal{W}$ to refer to the world frame reference. All vectors appearing in a vector force balance must be expressed in the same coordinate frame.
 
 Given two positions, $\mathbf{p}_1^W, \mathbf{p}_2^W \in \mathbb{R}^3$, their displacement is:
 
@@ -174,7 +176,11 @@ There are a couple of forces that are essential for studying autonomous systems.
 
 ### 1. Gravity ($\mathbf{F}_g$)
 Gravity is a constant field force acting downward along the negative vertical axis (typically the $z$-axis in aviation coordinate systems; we will get  back to this in another tutorial). Assuming a world frame W whose z-axis points upward, the equation is: 
-$$\mathbf{F}_g^W = \begin{bmatrix} 0 \\ 0 \\ -mg \end{bmatrix} \in \mathbb{R}^3$$
+
+$$
+\mathbf{F}_g^W = \begin{bmatrix} 0 \\ 0 \\ -mg \end{bmatrix} \in \mathbb{R}^3
+$$
+
 with 
 *   **$m \in \mathbb{R}_{>0}$:** The scalar mass of the vehicle ($\text{kg}$).
 *   **$g \approx 9.81\text{ m/s}^2$:** The acceleration due to gravity.
@@ -182,7 +188,11 @@ with
 
 ### 2. Viscous Damping ($\mathbf{F}_d$)
 A viscous damper is an idealized dissipative mechanical element that produces a force proportional to the relative velocity across the damper and opposite to that relative motion. For a damper connected to a fixed reference, a simple linear model is
-$$\mathbf{F}_d^W = -c \mathbf{v}^W = -c \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix} \in \mathbb{R}^3$$
+
+$$
+\mathbf{F}_d^W = -c \mathbf{v}^W = -c \begin{bmatrix} v_x \\ v_y \\ v_z \end{bmatrix} \in \mathbb{R}^3
+$$
+
 *   **$c \in \mathbb{R}_{>0}$:** The damping coefficient ($\text{N}\cdot\text{s/m}$).
 *   **$\mathbf{v}^W$:** The velocity vector. The negative sign ensures the force is always purely dissipative, directly opposing the direction of travel.
 
@@ -202,7 +212,7 @@ The point mass is a model representation of a body where the physical properties
 #### 2. Neglected Rotational Dynamics
 Because a mathematical point has no spatial distribution, it possesses no rotational inertia. Consequently, the vehicle's orientation and angular velocity are completely omitted. The body is treated as having **three translational degrees of freedom (3-DoF)** rather than the full six degrees of freedom (6-DoF) of a true rigid body. 
 
-The translational motion can thus, be described by the bodies position $ \mathbf{p(t)} \in \mathbb{R^3}$ and $\mathbf{v(t)} \in \mathbb{R}^3$. 
+The translational motion can thus, be described by the bodies position $\mathbf{p(t)} \in \mathbb{R^3}$ and $\mathbf{v(t)} \in \mathbb{R^3}$. 
 
 In a future tutorial, you will learn how these two states can be combined in a single state vector. 
 
@@ -259,11 +269,11 @@ $$
 To introduce applied forces, damping, and spring forces without unnecessary geometric complexity, we now restrict the point mass to motion along a single axis. 
 We denote its scalar position along this axis by
 
-$ q(t) \in \mathbb{R}$ and
+$q(t) \in \mathbb{R}$ and
 
 its velocity and its acceleration are therefore
 
-$ \dot q(t) \in \mathbb{R} \quad \text{and} \quad \ddot q(t)\in \mathbb{R}$ 
+$\dot q(t) \in \mathbb{R} \quad \text{and} \quad \ddot q(t)\in \mathbb{R}$ 
 
 respectively. Thus, the following sections will drop vector notation. 
 
@@ -409,7 +419,7 @@ Summary of the key terms and physical meaning
 A simplified vehicle model also begins with
 
 $$
-m\ddot{\mathbf{p}}^W(t)=\mathbf{F}^W_{net}(t).
+m\ddot{\mathbf{p}}^W(t)=\mathbf{F}^W_{\mathrm{net}}(t).
 $$
 
 The important modeling questions are:
@@ -444,9 +454,9 @@ What information is neglected when a rigid object is modeled as a point mass?
 
 Why is the damping force written as
 
-$
+$$
 F_d=-c\dot q?
-$
+$$
 
 ### 3. Question 3
 
