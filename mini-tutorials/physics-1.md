@@ -400,7 +400,7 @@ $$
 Applying Newton's second law,
 
 $$
-u(t)-c\dot q(t)-kq(t)=m\ddot q(t).
+u(t)-c\dot q(t)-kq(t)=m\ddot q(t)
 $$
 
 Thus,
