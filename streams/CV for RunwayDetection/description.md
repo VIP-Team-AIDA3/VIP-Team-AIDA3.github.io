@@ -1,4 +1,6 @@
-# Mini Tutorial - Computer Vision
+# CV for RunwayDetection
+
+## Basics of Computer Vision
 
 Many applications of ML models involve structured data, in which input variables have relationships with each other. One such application is that of image processing, in which pixels are spatialy correlated. A pattern that is found in one part of an image (such an edge or shape) can appear again anywhere else in the image. Traditional ML methods (such as a SVM) do not consider the relation between the elements of an input dataset's vectors $x = (x_1 \dots x_n)$, meaning a feature must be relearned for every location it appears in. As such, there is motivation for an ML architecture geared towards image processing. Convolutional neural networks (CNNs), which this tutorial will mainly focus on, solve this problem by applying filters that "slide" across an image, allowing for fewer learned parameters as well as feature locality.
 
@@ -30,7 +32,7 @@ $$C(j, k) = \sum_l \sum_m I(j + l, k + m) K(l, m)$$
 
 This of this as a sliding window technique. We are "moving" our filter across the image, with the full multiplication + addition of the elements within the filter and the bounded image being saved into a singular cell in the feature map. The process of convolution is also commonly expressed as $C = I * K$.
 
-![A 3x3 image convolved with a 2x2 filter to give a 2x2 feature map.](figures/convolution.png)
+![A 3x3 image convolved with a 2x2 filter to give a 2x2 feature map.](../../mini-tutorials/figures/convolution.png)
 
 ## Edge detection
 
@@ -44,7 +46,7 @@ Consider the traditional line equation $y = mx + c$, where $m$ is the slope and 
 
 However, the traditional line equation for a Hough transform is usually not used as it is memory intensive ($-\infty < x, y < \infty$). Libraries usually implement the algorithm using polar coordinates in the form $x cos \theta + y sin \theta = \rho$, where $\rho$ is the norm between the origin and the line, and $\theta$ is the angle between $\rho$ and the horizontal $x$-axis.
 
-![Representation of a point in the xy plane in the parameter space.](figures/polar-line-hough.png)
+![Representation of a point in the xy plane in the parameter space.](../../mini-tutorials/figures/polar-line-hough.png)
 
 ## Padding
 
@@ -103,7 +105,7 @@ where $A^{(k)}$ is a matrix with the pre-activation units in channel $k$ in the 
 
 This resulting array can be superimposed on the original image, creating a "heat map" as shown below.
 
-![](figures/saliency.png)
+![](../../mini-tutorials/figures/saliency.png)
 
 
 ## Object detection

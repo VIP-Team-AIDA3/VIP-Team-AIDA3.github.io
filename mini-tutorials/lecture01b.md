@@ -1,6 +1,6 @@
-# Mini-Tutorial 1B - Probability Distributions
+# Probability Distributions
 
-This tutorial extends Mini-Tutorial 1 from discrete probability to continuous random variables and probability distributions. The central modeling idea is that uncertainty can be represented with probability distributions, learning can be framed as inference from data, and many machine learning models can be built by choosing a distributional form and fitting its parameters.
+This tutorial extends Probability Basics from discrete probability to continuous random variables and probability distributions. The central modeling idea is that uncertainty can be represented with probability distributions, learning can be framed as inference from data, and many machine learning models can be built by choosing a distributional form and fitting its parameters.
 
 ## Basics of Densities: PDF and CDF
 

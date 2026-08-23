@@ -1,3 +1,9 @@
 # Welcome to VIP Team AIDA3
 
+:::{admonition} Welcome
+:class: tip
+
+This site is the public home for the VIP team: AI for autonomous aviation!
+:::
+
 This VIP research program develops machine-learning models for fixed-wing UAVs and participates in national and international competitions—both virtual and physical—to advance autonomous aviation. Students will organize themselves in smaller teams that fall in the program’s core research thrusts, including (1) perception, navigation, and control, as well as (2) digital twin and simulation, but also (3) have the opportunity to work on projects outside of these thrusts in the broader area of AI for autonomous aviation (e.g. human autonomy teaming). Teams are encouraged to explore and establish novel methodologies, such as nonlinear model predictive control, reinforcement learning, physics-informed ML, generative AI (LLMs), or embodied AI. Typical activities include software development in Python/C++/ROS 2, training and benchmarking models, building and testing simulation data pipelines, and participating in competitions. Over multiple semesters, teams aim to compete in different national and international competition events and create tools, datasets, and publications for autonomous aviation.

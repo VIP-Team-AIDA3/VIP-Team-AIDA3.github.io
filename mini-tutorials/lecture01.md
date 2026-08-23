@@ -1,4 +1,4 @@
-# Mini-Tutorial 1A - Probability Basics
+# Probability Basics
 
 Probability is the language we use when outcomes are uncertain but not completely arbitrary. It lets us say more than "maybe." We can quantify how likely an event is, combine pieces of evidence, compare competing explanations, and make decisions before we know exactly what will happen.
 
@@ -653,4 +653,4 @@ Over many mission starts, the UAV will require an average of approximately 1.33 
 - Joseph Bertrand, *Calcul des probabilités*, 1889. See overview of Bertrand's chord paradox: <https://en.wikipedia.org/wiki/Bertrand_paradox_(probability)>
 - Richard von Mises, frequentist interpretation overview: <https://plato.stanford.edu/entries/probability-interpret/>
 - An exceptional set of lectures on probability and statistics by Steven Brunton of UWash: <https://youtube.com/playlist?list=PLMrJAkhIeNNR3sNYvfgiKgcStwuPSts9V&si=sFO1lSGlWPbBZHzg/>
-- Code to plot the discrete probabilirt distributions: <https://github.com/VIP-Team-AIDA3/MiniTutorialCodes/blob/master/mini-tutorial%201%20-%20discrete%20probability.ipynb>
+- Companion code notebook for plotting the discrete probability distributions: [discrete probability plotting notebook](https://github.com/VIP-Team-AIDA3/MiniTutorialCodes/blob/master/mini-tutorial%201%20-%20discrete%20probability.ipynb)

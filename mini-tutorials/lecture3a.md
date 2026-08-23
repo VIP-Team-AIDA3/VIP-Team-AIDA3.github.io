@@ -1,4 +1,4 @@
-# Mini-Tutorial 3A - Air Traffic Control Basics
+# Air Traffic Control Basics
 
 *What is air traffic control, why does it exist, and what do we need it for?*
 

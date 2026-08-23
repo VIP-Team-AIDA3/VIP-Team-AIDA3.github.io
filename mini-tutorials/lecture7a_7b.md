@@ -1,4 +1,4 @@
-# A Tutorial in Logic: From Boolean operations to temporal logic for autonomous systems
+# Boolean, Propositional, and Temporal Logic
 
 This tutorial covers logic systems used in autonomous systems.
 
