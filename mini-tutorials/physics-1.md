@@ -404,8 +404,9 @@ u(t)-c\dot q(t)-kq(t)=m\ddot q(t)
 $$
 
 Thus,
+
 $$
-\boxed{m\ddot q(t)+c\dot q(t)+kq(t)=u(t).}
+\boxed{m\ddot q(t)+c\dot q(t)+kq(t)=u(t)}
 $$
 
 or rearranging gives us:
