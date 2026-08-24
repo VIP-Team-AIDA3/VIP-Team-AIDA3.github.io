@@ -1,6 +1,6 @@
 # AI for Autonomy Research
 
-**VIP Team AIDA3 · Purdue University · Fall 2026**
+**VIP Team AIrTonomy · Purdue University · Fall 2026**
 
 Machine learning, control, and formal methods for fixed-wing aircraft that fly themselves. Student subteams build the pieces of an autonomous aviation stack, from wind tunnel coefficients to airspace geometry to the language a controller uses on the radio. The work flies on real aircraft at the Purdue Augmented Aviation Lab.
 
