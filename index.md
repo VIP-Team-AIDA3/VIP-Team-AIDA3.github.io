@@ -15,7 +15,7 @@ Machine learning, control, and formal methods for fixed-wing aircraft that fly t
 
 ## What this team does
 
-AIDA3 develops machine learning models for fixed-wing UAVs and competes in national and international autonomy competitions, both virtual and physical. Students organize into smaller subteams within the program's core research thrusts: perception, navigation, and control; digital twin and simulation; and projects in the broader area of AI for autonomous aviation such as human autonomy teaming.
+We develop machine learning models for fixed-wing UAVs and compete in national and international autonomy competitions, both virtual and physical. Students organize into smaller subteams within the program's core research thrusts: perception, navigation, and control; digital twin and simulation; and projects in the broader area of AI for autonomous aviation such as human autonomy teaming.
 
 Subteams are encouraged to establish new methods rather than reproduce existing ones. Recent directions include nonlinear model predictive control, reinforcement learning, physics-informed machine learning, generative AI, and formal methods for safety-critical language. Typical work is software development in Python, C++, and ROS 2, training and benchmarking models, building and testing simulation data pipelines, and running experiments in the wind tunnel and in flight.
 
