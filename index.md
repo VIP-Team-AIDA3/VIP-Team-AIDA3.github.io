@@ -129,9 +129,9 @@ Record controller and pilot radio traffic, align it with ADS-B tracks on a commo
 
 ::::
 
-## Course team
+## Course Instructor
 
-::::{grid} 1 1 3 3
+::::{grid} 1 1 2 2
 :gutter: 3
 
 :::{grid-item-card} Instructor and faculty mentor
@@ -144,46 +144,28 @@ Record controller and pilot radio traffic, align it with ADS-B tracks on a commo
 **Office hours:** by appointment
 :::
 
-:::{grid-item-card} Doctoral student and mentor
-**Christopher Rashidian**
-
-[crashid@purdue.edu](mailto:crashid@purdue.edu)
-
-**Office hours:** by appointment
-:::
-
-:::{grid-item-card} Graduate student and mentor
-**Richard Ajagu**
-
-[rajagu@purdue.edu](mailto:rajagu@purdue.edu)
-
-**Office:** TBA
-
-**Office hours:** by appointment
-:::
-
 ::::
 
 ## Semester schedule (subject to change)
 
-| Week | Date | Mini-tutorial | Phase | Due |
-| :---: | :---: | :--- | :--- | :--- |
-| 1 | 08/26/26 | Introduction to the team and logistics | Problem formulation | |
-| 2 | 09/02/26 | | | PD plan |
-| 3 | 09/09/26 | Newton's laws of motion for a point mass | Problem formulation | Subteam selection |
-| 4 | 09/16/26 | Coordinate systems in aerospace: Euler, quaternions, Euclidean | | |
-| 5 | 09/23/26 | Air traffic control: what it is and why it exists | Problem formulation | Research proposal |
-| 6 | 09/30/26 | Fixed-wing aircraft and 3-DOF longitudinal equations of motion | | |
-| 7 | 10/07/26 | Basic probability | Data collection and modeling | |
-| 8 | 10/14/26 | Basic probability | | Mid-semester IPE |
-| 9 | 10/21/26 | Linear regression and gradient descent | Data collection and modeling | |
-| 10 | 10/28/26 | Linear regression and gradient descent | | |
-| 11 | 11/04/26 | Neural networks and backpropagation | Data collection and modeling | Written report update |
-| 12 | 11/11/26 | Convolutional networks and basic computer vision | | |
-| 13 | 11/18/26 | Formal logic | Data collection and modeling | |
-| 14 | 11/25/26 | Formal logic | | |
-| 15 | 12/02/26 | Signal temporal logic | Simulation, testing, validation | |
-| 16 | 12/09/26 | Formal grammars | Final paper and presentations | Report and presentation |
+| Week | Date | Mini-tutorial | Design activity phase | PD deliverables | Student assignments and deliverables |
+| :---: | :---: | :--- | :--- | :--- | :--- |
+| 1 | 08/26/26 | Introduction to the team and logistics | Problem formulation / project description | | |
+| 2 | 09/02/26 | | Problem formulation / project description | Activity 1 due Sept 4 at 11:59 PM | Team selection |
+| 3 | 09/09/26 | Newton's laws of motion for a point mass | Problem formulation / project description | Professional Development Plan due Sept 11 at 11:59 PM | Research proposal: research question, technical plan (model, data, experiment, validation), timeline and roadmap, tools and frameworks to be used. Based on template, 1 page max |
+| 4 | 09/16/26 | Coordinate systems in aerospace: Euler, quaternions, Euclidean | Data collection and modeling | | |
+| 5 | 09/23/26 | Air traffic control: what it is and why it exists | Data collection and modeling | | |
+| 6 | 09/30/26 | Fixed-wing aircraft and 3-DOF longitudinal equations of motion | Data collection and modeling | | |
+| 7 | 10/07/26 | Basic probability | Data collection and modeling | | |
+| 8 | 10/14/26 | Basic probability | Simulation, testing, validation | Activity 2 due Oct 14 at 11:59 PM | |
+| 9 | 10/21/26 | Linear regression and gradient descent | Simulation, testing, validation | | |
+| 10 | 10/28/26 | Linear regression and gradient descent | Simulation, testing, validation | | |
+| 11 | 11/04/26 | Neural networks and backpropagation | Simulation, testing, validation | | |
+| 12 | 11/11/26 | Convolutional networks and basic computer vision | Simulation, testing, validation | | |
+| 13 | 11/18/26 | Formal logic | Simulation, testing, validation | Activity 3 due Nov 17 at 11:59 PM | |
+| 14 | 11/25/26 | Formal logic | Analyses and implications | | |
+| 15 | 12/02/26 | Signal temporal logic | Analyses and implications | | |
+| 16 | 12/09/26 | Formal grammars | Analyses and implications | Activities 4 through 10 due Dec 11 at 11:59 PM | Final paper and presentations, submission due Dec 11 at 11:59 PM |
 
 ## Deliverables and grading
 
@@ -192,7 +174,8 @@ Each student produces a one-page research proposal aligned with their subteam, r
 | Assignment | Due | Weight |
 | :--- | :---: | :---: |
 | CATME and VIP activities | Ongoing | 5% |
-| Quizzes | Ongoing | 10% |
+| Competition Activities | Ongoing | 5% |
+| Quizzes | Ongoing | 5% |
 | Professional development activities | Ongoing | 10% |
 | One-page research proposal | September 13, 2026 | 15% |
 | Final presentation | December 11, 2026 | 20% |
