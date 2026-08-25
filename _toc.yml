@@ -30,6 +30,11 @@ parts:
       - file: streams/LLMs for UAVs/description
         sections:
           - file: streams/LLMs for UAVs/teams
+      - file: streams/Geospatial-Modeling/description
+        sections:
+          - file: streams/Geospatial-Modeling/Tutorials  
+            sections: 
+              - file: streams/Geospatial-Modeling/Tutorials/01-Introduction-to-GIS
   - caption: Resources
     chapters:
       - file: resources/index
