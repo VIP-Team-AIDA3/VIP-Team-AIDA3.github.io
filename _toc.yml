@@ -34,9 +34,12 @@ parts:
               - file: streams/RL for GNC/Tutorials/06-Q-Learning
                 sections:
                   - file: streams/RL for GNC/Tutorials/06-Q-Learning-Demo
-      - file: streams/SysID for UAVs/description
-        sections:
-          - file: streams/SysID for UAVs/tutorials/VIP_GP_tutorial
+        - file: streams/SysID for UAVs/description
+          sections:
+            - file: streams/SysID for UAVs/teams
+            - file: streams/SysID for UAVs/Tutorials/index
+              sections:
+                - file: streams/SysID for UAVs/Tutorials/VIP_GP_tutorial
       - file: streams/Classical GNC/description
         sections:
           - file: streams/Classical GNC/teams
