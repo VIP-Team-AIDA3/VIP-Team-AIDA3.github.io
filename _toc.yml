@@ -51,6 +51,9 @@ parts:
           - file: streams/Geospatial-Modeling/Tutorials  
             sections: 
               - file: streams/Geospatial-Modeling/Tutorials/01-Introduction-to-GIS
+              - file: streams/Geospatial-Modeling/Tutorials/02-Degrees-to-Meters
+              - file: streams/Geospatial-Modeling/Tutorials/03-Polygons-to-Prisms
+              - file: streams/Geospatial-Modeling/Tutorials/04-Intro-to-Logic
   - caption: Resources
     chapters:
       - file: resources/index
