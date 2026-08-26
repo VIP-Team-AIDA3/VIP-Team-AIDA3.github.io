@@ -18,6 +18,22 @@ parts:
       - file: streams/RL for GNC/description
         sections:
           - file: streams/RL for GNC/teams
+          - file: streams/RL for GNC/Tutorials/index
+            sections:
+              - file: streams/RL for GNC/Tutorials/01-Intro-to-RL
+              - file: streams/RL for GNC/Tutorials/02-Mathematical-Foundations-of-RL
+              - file: streams/RL for GNC/Tutorials/03-Dynamic-Programming
+                sections:
+                  - file: streams/RL for GNC/Tutorials/03-Dynamic-Programming-Demo
+              - file: streams/RL for GNC/Tutorials/04-Monte-Carlo
+                sections:
+                  - file: streams/RL for GNC/Tutorials/04-Monte-Carlo-Demo
+              - file: streams/RL for GNC/Tutorials/05-Temporal-Difference-and-SARSA
+                sections:
+                  - file: streams/RL for GNC/Tutorials/05-SARSA-Demo
+              - file: streams/RL for GNC/Tutorials/06-Q-Learning
+                sections:
+                  - file: streams/RL for GNC/Tutorials/06-Q-Learning-Demo
       - file: streams/SysID for UAVs/description
         sections:
           - file: streams/SysID for UAVs/teams
@@ -30,6 +46,11 @@ parts:
       - file: streams/LLMs for UAVs/description
         sections:
           - file: streams/LLMs for UAVs/teams
+      - file: streams/Geospatial-Modeling/description
+        sections:
+          - file: streams/Geospatial-Modeling/Tutorials  
+            sections: 
+              - file: streams/Geospatial-Modeling/Tutorials/01-Introduction-to-GIS
   - caption: Resources
     chapters:
       - file: resources/index
