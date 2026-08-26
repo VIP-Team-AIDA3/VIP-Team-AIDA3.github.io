@@ -48,7 +48,7 @@ parts:
           - file: streams/LLMs for UAVs/teams
       - file: streams/Geospatial-Modeling/description
         sections:
-          - file: streams/Geospatial-Modeling/Tutorials  
+          - file: streams/Geospatial-Modeling/Tutorials/index  
             sections: 
               - file: streams/Geospatial-Modeling/Tutorials/01-Introduction-to-GIS
               - file: streams/Geospatial-Modeling/Tutorials/02-Degrees-to-Meters
