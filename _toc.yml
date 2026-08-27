@@ -36,32 +36,19 @@ parts:
                   - file: streams/RL for GNC/Tutorials/06-Q-Learning-Demo
       - file: streams/SysID for UAVs/description
         sections:
-          - file: streams/SysID for UAVs/teams
-          - file: streams/SysID for UAVs/Tutorials/index
-            sections:
-              - file: streams/SysID for UAVs/Tutorials/VIP_GP_tutorial
+          - file: streams/SysID for UAVs/tutorials/VIP_GP_tutorial
       - file: streams/ATC and ADS-B Data Mining/description
         sections:
-          - file: streams/ATC and ADS-B Data Mining/teams
-          - file: streams/ATC and ADS-B Data Mining/Tutorials/index
-            sections:
-              - file: streams/SysID for UAVs/Tutorials/01-Grammar
-              - file: streams/SysID for UAVs/Tutorials/02-ATC English
-      - file: streams/ATC and ADS-B Data Mining/description
+          - file: streams/ATC and ADS-B Data Mining/Tutorials/01-Grammar
+          - file: streams/ATC and ADS-B Data Mining/Tutorials/02-ATC English
+      - file: streams/Geospatial-Modeling/description
         sections:
-          - file: streams/Geospatial-Modeling/teams
-          - file: streams/Geospatial-Modeling/Tutorials/index
-            sections:
-              - file: streams/Geospatial-Modeling/Tutorials/01-Introduction-to-GIS
-              - file: streams/Geospatial-Modeling/Tutorials/02-Degrees-to-Meters
-              - file: streams/Geospatial-Modeling/Tutorials/03-Polygons-to-Prisms
-              - file: streams/Geospatial-Modeling/Tutorials/04-Intro-to-Logic
+          - file: streams/Geospatial-Modeling/Tutorials/01-Introduction-to-GIS
+          - file: streams/Geospatial-Modeling/Tutorials/02-Degrees-to-Meters
+          - file: streams/Geospatial-Modeling/Tutorials/03-Polygons-to-Prisms
+          - file: streams/Geospatial-Modeling/Tutorials/04-Intro-to-Logic
       - file: streams/CV for RunwayDetection/description
-        sections:
-          - file: streams/Geospatial-Modeling/teams
-        - file: streams/Wind Tunnel Testing/description
-        sections:
-          - file: streams/Geospatial-Modeling/teams
+      - file: streams/Wind Tunnel Testing/description
   - caption: Resources
     chapters:
       - file: resources/index
