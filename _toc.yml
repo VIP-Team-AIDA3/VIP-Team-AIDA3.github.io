@@ -43,6 +43,8 @@ parts:
       - file: streams/CV for RunwayDetection/index
         sections:
           - file: streams/CV for RunwayDetection/teams
+      - file: streams/Wind-Tunnel-Testing/index
+ 
       - file: streams/Geospatial-Modeling/index
         sections:
           - file: streams/Geospatial-Modeling/Tutorials/index
@@ -51,13 +53,13 @@ parts:
               - file: streams/Geospatial-Modeling/Tutorials/02-Degrees-to-Meters
               - file: streams/Geospatial-Modeling/Tutorials/03-Polygons-to-Prisms
               - file: streams/Geospatial-Modeling/Tutorials/04-Intro-to-Logic
-       - file: streams/ATC and ADS-B Data Mining/index
+ 
+      - file: streams/ATC-and-ADS-B-Data-Mining/index
         sections:
-          - file: streams/ATC and ADS-B Data Mining/Tutorials/index
+          - file: streams/ATC-and-ADS-B-Data-Mining/Tutorials/index
             sections:
-              - file: streams/ATC and ADS-B Data Mining/Tutorials/01-Grammars
-              - file: streams/ATC and ADS-B Data Mining/Tutorials/02-ATC-English
-        - file: streams/Wind Tunnel Testing/index
+              - file: streams/ATC-and-ADS-B-Data-Mining/Tutorials/01-Grammars
+              - file: streams/ATC-and-ADS-B-Data-Mining/Tutorials/02-ATC-English
   - caption: Resources
     chapters:
       - file: resources/index
