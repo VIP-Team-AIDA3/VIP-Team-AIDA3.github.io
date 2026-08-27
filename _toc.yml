@@ -8,10 +8,6 @@ parts:
           - file: mini-tutorials/physics-1
           - file: mini-tutorials/lecture01
           - file: mini-tutorials/lecture01b
-          - file: mini-tutorials/lecture3a
-          - file: mini-tutorials/lecture7a_7b
-          - file: mini-tutorials/signal_temporal_logic_uav
-          - file: mini-tutorials/intro-to-grammar
           - file: mini-tutorials/lecture02a
   - caption: Streams
     chapters:
