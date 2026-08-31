@@ -35,14 +35,14 @@ parts:
           - file: streams/SysID for UAVs/tutorials/VIP_GP_tutorial
       - file: streams/ATC and ADS-B Data Mining/description
         sections:
-          - file: streams/ATC and ADS-B Data Mining/Tutorials/01-Grammar
+          # - file: streams/ATC and ADS-B Data Mining/Tutorials/01-Grammar
           - file: streams/ATC and ADS-B Data Mining/Tutorials/02-ATC English
       - file: streams/Geospatial-Modeling/description
         sections:
           - file: streams/Geospatial-Modeling/Tutorials/01-Introduction-to-GIS
           - file: streams/Geospatial-Modeling/Tutorials/02-Degrees-to-Meters
           - file: streams/Geospatial-Modeling/Tutorials/03-Polygons-to-Prisms
-          - file: streams/Geospatial-Modeling/Tutorials/04-Intro-to-Logic
+          # - file: streams/Geospatial-Modeling/Tutorials/04-Intro-to-Logic
       - file: streams/CV for RunwayDetection/description
       - file: streams/Wind Tunnel Testing/description
   - caption: Resources
