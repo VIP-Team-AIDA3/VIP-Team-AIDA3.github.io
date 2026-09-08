@@ -39,12 +39,6 @@ In section 2 these are Boolean variables. In section 3 they are propositions. In
 
 *Solution.* It uses armed, gps_fix, and in_geofence. It is about the moment of arming, so a single snapshot of those three values is enough to check it. That makes it a job for Boolean and propositional logic. If the rule had said "the aircraft must never be armed without a fix," the word "never" would mean checking every moment of the flight, which is what temporal logic is for.
 
-### 1.3 Exercises
-
-1. Rewrite this as "given these facts, this must follow": "The aircraft is armed and airborne. Any aircraft that is armed and airborne must have a GPS fix. So the aircraft has a fix."
-2. For each of the following, say whether you can check it from one snapshot or need the flight history. (a) The battery is low. (b) The battery has been low for ten seconds. (c) The aircraft is in the geofence. (d) The aircraft never left the geofence.
-3. Which of the three words syntax, semantics, or proof best describes each activity: (a) checking that a formula has balanced parentheses; (b) deciding whether a formula is true given sensor values; (c) deriving a new rule from two existing rules.
-
 ---
 
 ## 2. Boolean logic
@@ -212,18 +206,6 @@ For expressions with many variables, engineers use tools like Karnaugh maps or s
 | Implication | p → q | 0 only when p = 1 and q = 0 | armed → gps_fix: arming needs a fix |
 | Biconditional | p ↔ q | 1 when both sides match | gear_down ↔ landing_mode |
 
-### 2.8 Exercises
-
-1. Build the truth table for p ∧ ¬q.
-2. Build the truth table for (p ∧ q) ∨ ¬r. It has eight rows. Work one column at a time.
-3. Use De Morgan to rewrite ¬(p ∨ ¬q) so that no NOT sits outside a bracket.
-4. Use a truth table to show that p → q and q → p have different columns. Which rows differ?
-5. Use a truth table to show that p → q and ¬q → ¬p have the same column.
-6. Write OR using only NAND. Hint: first write p ∨ q using De Morgan as ¬(¬p ∧ ¬q), then remember that NAND of a thing with itself is NOT of that thing.
-7. Simplify (p ∨ q) ∧ (p ∨ ¬q) to a single variable, naming each law.
-8. A landing interlock permits landing when the aircraft has a GPS fix, is inside the geofence, and is not in return-to-launch mode, or when the battery is low regardless of anything else. Write the permit condition. Then write the "landing refused" condition with every NOT pushed onto a single variable.
-9. Translate into a Boolean expression and give the truth table: "The aircraft is idle when it is neither armed nor airborne."
-
 ---
 
 ## 3. Propositional logic
@@ -369,19 +351,6 @@ There are two ways to establish that a conclusion follows: check the meaning (�
 | ⊢ | proves | the right side can be derived from the left side using the rules |
 | ≡ | equivalent | same truth table column |
 
-### 3.11 Exercises
-
-1. Which of these are propositions? (a) "Runway 27 is closed." (b) "Please close runway 27." (c) "Runway 27 is closed or it is open." (d) "The wind is above 15 knots." (e) "The wind speed is x."
-2. Add full parentheses to p → q ∨ r ∧ ¬s.
-3. Evaluate (low_batt → rtl) ∧ (rtl → ¬airborne) when low_batt = 1, rtl = 1, airborne = 1.
-4. Is (p ∧ (p → q)) → q a tautology? Try to make it false.
-5. Convert (p ∧ q) ∨ (¬p ∧ r) into CNF.
-6. Does {p → q, q → r, p} ⊨ r? Justify.
-7. Does {p → q, ¬p} ⊨ ¬q? If not, give a countermodel and say in English why the reasoning is wrong.
-8. Give an argument that is valid but has a false conclusion. Explain why this forces at least one premise to be false.
-9. A checklist says: "If the aircraft is airborne, it is armed. If it is armed, it has a fix. The aircraft has no fix." What can you conclude about whether it is airborne? Write the premises in symbols and give a numbered proof.
-10. Explain in one or two sentences why "the premises entail C" means the same as "the premises together with ¬C cannot all be true at once."
-
 ---
 
 ## 4. Predicates and quantifiers
@@ -488,18 +457,6 @@ Read the quantifiers left to right and imagine each one being chosen before the 
 | Negated universal | ¬∀x P(x) ≡ ∃x ¬P(x) | something is not P | ¬∀x Airworthy(x) |
 | Negated existential | ¬∃x P(x) ≡ ∀x ¬P(x) | nothing is P | ¬∃x Airborne(x): all on the ground |
 
-### 4.8 Exercises
-
-1. Domain: the fleet. Predicates Airborne(x), Airworthy(x), HasFix(x). Write in symbols: (a) every airborne aircraft is airworthy; (b) some airworthy aircraft is not airborne; (c) no aircraft is airborne without a fix; (d) every aircraft is airborne or airworthy, or both.
-2. Translate into English: ∃x (Airborne(x) ∧ ¬Airworthy(x)). Why would an operator care?
-3. Negate ∀x (Armed(x) → Airborne(x)) and simplify until every ¬ sits directly on a predicate.
-4. Negate ∃x (LowBatt(x) ∧ ¬RTL(x)) and simplify. Say the result in English.
-5. Fleet {E, L, Y}. E is armed with a fix. L is armed with no fix. Y is not armed and has a fix. Evaluate ∀x (Armed(x) → HasFix(x)) and ∃x (HasFix(x) ∧ ¬Armed(x)). Name the counterexample or witness.
-6. Give a domain and a predicate for which ∀x P(x) is false but ∃x P(x) is true.
-7. A student writes "every armed aircraft has a fix" as ∀x (Armed(x) ∧ HasFix(x)). Give a small fleet where the English sentence is true but the student's formula is false.
-8. With the fleet {E, L, Y}, write ∀x (Armed(x) → HasFix(x)) as a propositional formula with no quantifiers, using atoms like Armed_E and HasFix_E.
-9. Explain the difference between ∀x ∃y HigherThan(y, x) and ∃y ∀x HigherThan(y, x) in plain English.
-
 ---
 
 ## Mixed problems
@@ -519,54 +476,6 @@ These combine ideas from more than one section.
 **P6.** Write "every armed aircraft that is airborne has a GPS fix and is inside the geofence" in predicate logic. Then write its negation with every ¬ on a predicate. Then say in one sentence what a monitor should search for.
 
 **P7.** The rule "if the battery is low, return to launch" was written for one aircraft in section 1.2. Rewrite it as a predicate-logic sentence about a fleet. What does the ∀ add that the one-aircraft version did not have?
-
----
-
-## Answer key for section exercises
-
-### Section 1
-
-1. Facts: armed ∧ airborne, and (armed ∧ airborne) → gps_fix. Must follow: gps_fix. This is modus ponens.
-2. (a) snapshot; (b) history; (c) snapshot; (d) history.
-3. (a) syntax; (b) semantics; (c) proof.
-
-### Section 2
-
-1. Rows (p, q): 00→0, 01→0, 10→1, 11→0.
-2. Rows (p, q, r): 000→1, 001→0, 010→1, 011→0, 100→1, 101→0, 110→1, 111→1.
-3. ¬(p ∨ ¬q) = ¬p ∧ ¬¬q = ¬p ∧ q.
-4. p → q gives 1, 1, 0, 1. q → p gives 1, 0, 1, 1. They differ on rows 01 and 10.
-5. Both columns are 1, 1, 0, 1.
-6. p ∨ q = ¬(¬p ∧ ¬q) = NAND(¬p, ¬q) = NAND(NAND(p, p), NAND(q, q)).
-7. (p ∨ q) ∧ (p ∨ ¬q) = p ∨ (q ∧ ¬q) by distributivity = p ∨ 0 by complement = p by identity.
-8. permit = (gps_fix ∧ in_geofence ∧ ¬rtl) ∨ low_batt. refused = (¬gps_fix ∨ ¬in_geofence ∨ rtl) ∧ ¬low_batt.
-9. idle = ¬armed ∧ ¬airborne, or equivalently ¬(armed ∨ airborne). Table: 00→1, 01→0, 10→0, 11→0.
-
-### Section 3
-
-1. (a) yes; (b) no, a request; (c) yes, and it is a tautology; (d) yes; (e) no, it depends on x.
-2. p → (q ∨ (r ∧ (¬s))).
-3. low_batt → rtl is 1 → 1 = 1. rtl → ¬airborne is 1 → 0 = 0. The AND is 0.
-4. To make it false you need p ∧ (p → q) true and q false. p = 1 and q = 0 makes p → q false, so the antecedent fails. No falsifying valuation; it is a tautology (it is modus ponens written as a formula).
-5. (p ∨ r) ∧ (¬p ∨ q) ∧ (q ∨ r). (The clause p ∨ ¬p also appears when you distribute but is always true and can be dropped.)
-6. Yes. p and p → q give q. q and q → r give r.
-7. No. Countermodel: p = 0, q = 1. Both premises true, ¬q false. In English: "if armed then fix; not armed; so no fix" ignores that the aircraft could have a fix for reasons that have nothing to do with being armed. This is called denying the antecedent.
-8. Example: premises p → q and p, conclusion q, with p and q both false. It is valid by modus ponens. A valid argument with all true premises must have a true conclusion, so if the conclusion is false, some premise must be false.
-9. airborne → armed, armed → gps_fix, ¬gps_fix. Modus tollens gives ¬armed. Modus tollens again gives ¬airborne. The aircraft is not airborne.
-10. "Premises entail C" means there is no valuation with the premises true and C false. "Premises plus ¬C cannot all be true" says exactly the same thing: no valuation has the premises true and ¬C true, that is, C false.
-
-### Section 4
-
-1. (a) ∀x (Airborne(x) → Airworthy(x)). (b) ∃x (Airworthy(x) ∧ ¬Airborne(x)). (c) ∀x (Airborne(x) → HasFix(x)), or ¬∃x (Airborne(x) ∧ ¬HasFix(x)). (d) ∀x (Airborne(x) ∨ Airworthy(x)).
-2. Some aircraft is flying while not airworthy. That aircraft should be on the ground.
-3. ∃x (Armed(x) ∧ ¬Airborne(x)).
-4. ∀x (LowBatt(x) → RTL(x)). Every low-battery aircraft is returning to launch.
-5. ∀x (Armed(x) → HasFix(x)) is false; L is the counterexample. ∃x (HasFix(x) ∧ ¬Armed(x)) is true; Y is the witness.
-6. Domain {E, L}, P = Airborne, E airborne and L not.
-7. Fleet {E, L}, E armed with a fix, L not armed and no fix. The English is true, since the only armed aircraft has a fix. The formula is false because L is not armed.
-8. (Armed_E → HasFix_E) ∧ (Armed_L → HasFix_L) ∧ (Armed_Y → HasFix_Y).
-9. The first says every aircraft has some aircraft above it, possibly a different one each time. The second says one particular aircraft is above all the others. Over a real fleet the first is false, since the highest aircraft has nothing above it, while the second can be true.
-
 ---
 
 ## Where to read more
