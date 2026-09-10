@@ -7,6 +7,6 @@ A tailsitter rests on its tail for takeoff and landing, then rotates approximate
 <img width="512" height="384" alt="image" src="https://github.com/user-attachments/assets/4590bd48-5aa6-4af2-9012-016708ea2d93" />
 </div>
 
-The architecture has gained renewed attention in modeling, research, and commercial surveying. PX4 and ArduPilot both support tailsitter configurations; open research platforms such as Phoenix provide reusable CAD, BOM, and simulation resources; and commercial aircraft use tailsitter layouts for mapping, multispectral imaging, and LiDAR missions. These examples make the platform timely and accessible for students while leaving meaningful technical questions unresolved.
+The architecture has gained renewed attention in modeling, research, and commercial surveying. PX4 and ArduPilot both support tailsitter configurations; open research platforms such as Phoenix provide reusable CAD, BOM, and simulation resources; and commercial aircraft use tailsitter layouts for mapping, multispectral imaging, and LiDAR missions. 
 
 
