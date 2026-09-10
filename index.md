@@ -99,11 +99,11 @@ Measure lift and drag on a powered UAV in the Boeing Wind Tunnel, separate propu
 [Read more](subteams/wind-tunnel)
 :::
 
-:::{grid-item-card} Bayesian Methods for Modeling and Uncertainty Quantification
-Return a distribution over parameters instead of a single fit. Posterior inference, residual models for unmodeled dynamics, and calibration against held-out flight data.
+:::{grid-item-card} Tail Sitter Project
+In this project, you will build, test, and fly a tailsitter VTOL UAV: a fixed-wing aircraft that takes off and lands on its tail, hovers, and pitches over to cruise on the wing, using the same rotors and elevons for every flight phase.
 
 +++
-[Read more](subteams/bayesian-methods)
+[Read more](subteams/tail-sitter)
 :::
 
 :::{grid-item-card} Large Language Models for Safe UAV Operations
@@ -139,9 +139,9 @@ Record controller and pilot radio traffic, align it with ADS-B tracks on a commo
 
 [sbrunswi@purdue.edu](mailto:sbrunswi@purdue.edu)
 
-**Office:** MRGN 148
+**Office:** NISW 116
 
-**Office hours:** by appointment
+**Office hours:** Monday 3PM to 4PM
 :::
 
 ::::
