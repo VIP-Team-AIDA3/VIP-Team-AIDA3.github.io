@@ -45,6 +45,7 @@ parts:
           # - file: streams/Geospatial-Modeling/Tutorials/04-Intro-to-Logic
       - file: streams/CV for RunwayDetection/description
       - file: streams/Wind Tunnel Testing/description
+      - file: streams/tailsitter/description
   - caption: Resources
     chapters:
       - file: resources/index
