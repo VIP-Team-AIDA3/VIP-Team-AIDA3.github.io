@@ -9,6 +9,7 @@ parts:
           - file: mini-tutorials/lecture01
           - file: mini-tutorials/lecture01b
           - file: mini-tutorials/lecture02a
+          - file: mini-tutorials/logic-01_intro
   - caption: Streams
     chapters:
       - file: streams/RL for GNC/description
